@@ -28,11 +28,19 @@ vector<string> split(string str, char delimiter)
 
 int main(int argc, char** argv)
 {
-    string path = "/home/omid55/PythonProjects/RecordGenerator/Generated1.txt";
-    if(argc > 1)
-    {
-        path = argv[1];
+    string path;
+    if (argc == 1) {
+        path = "Generated1.txt";
+    } else if (!strcmp(argv[1], "xcode") && !strcmp(argv[2], "arthur")) {
+     path = "/Users/arthurpan/Desktop/CS130A_Final_Project/130FinalProject/Generated1.txt";
+    } else if (!strcmp(argv[1], "xcode") && !strcmp(argv[2], "jb")) {
+        path = "/Users/JB/Developement/CS130A_Final_Project/130FinalProject/130FinalProject/Generated1.txt";
+    } else {
+        cout << "wrong arguements" << endl;
+        return 1;
     }
+    
+    cout << path;
     
     ifstream f;
     f.open(path.c_str(), ios::in);
@@ -45,6 +53,9 @@ int main(int argc, char** argv)
             std::getline(f, line);
             vector<string> words = split(line, ',');
             cout << words.size() << endl;
+            for (int i = 0; i <words.size(); i++) {
+                cout << words[i] << ",";
+            }
             // ... TO DO
         }
     }
