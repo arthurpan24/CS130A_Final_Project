@@ -32,7 +32,7 @@ int main(int argc, char** argv)
     if (argc == 1) {
         path = "Generated1.txt";
     } else if (!strcmp(argv[1], "xcode") && !strcmp(argv[2], "arthur")) {
-     path = "/Users/arthurpan/Desktop/CS130A_Final_Project/130FinalProject/Generated1.txt";
+     path = "/Users/arthurpan/Desktop/CS130A_Final_Project/130FinalProject/130FinalProject/Generated1.txt";
     } else if (!strcmp(argv[1], "xcode") && !strcmp(argv[2], "jb")) {
         path = "/Users/JB/Developement/CS130A_Final_Project/130FinalProject/130FinalProject/Generated1.txt";
     } else {
@@ -52,10 +52,11 @@ int main(int argc, char** argv)
             string line;
             std::getline(f, line);
             vector<string> words = split(line, ',');
-            cout << words.size() << endl;
+  
             for (int i = 0; i <words.size(); i++) {
                 cout << words[i] << ",";
             }
+            cout << words.size() << endl;
             // ... TO DO
         }
     }
