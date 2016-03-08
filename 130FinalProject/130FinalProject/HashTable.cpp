@@ -7,3 +7,13 @@
 //
 
 #include "HashTable.h"
+
+HashTable::HashTable ()
+{
+    
+}
+
+bool HashTable::insert(Person::Person person)
+{
+    return false;
+}
