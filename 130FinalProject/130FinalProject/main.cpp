@@ -5,10 +5,9 @@
  *      Author: omid
  */
 
-#include "HashTable.h"
 #include "Person.h"
 #include "BTree.h"
-#include "Graph.h"
+#include "FriendshipGraph.h"
 
 #include <string>
 #include <sstream>
@@ -54,23 +53,28 @@ int main(int argc, char** argv)
     if(!f) cerr << "File not found." << endl;
     else
     {
+        FriendshipGraph *graph = new FriendshipGraph(201);
         while(!f.eof())
         {
             string line;
             std::getline(f, line);
             vector<string> words = split(line, ',');
-  
+            
             for (int i = 0; i <words.size(); i++) {
                 cout << words[i] << ",";
             }
+            cout << words.size();
+            
             //We can assume that the inputs are of currect format, so we can assume that there will be at least 3 inputs
             //words[0] will be the name of the person
             //words[1] will be the age of the person
             //words[2] will be the occupation/desciption
-            //Create an object with these parameters, and then add friends in through other means
             
-            
-            //Also should support taking in printall function
+            //Create an object with these parameters
+            Person* person = new Person(words[0],stoi(words[1]), words[2]);
+            cout << person->getName() << endl;
+            //Add the person into the hash table
+    
         }
         
         
