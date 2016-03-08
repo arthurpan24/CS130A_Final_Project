@@ -12,6 +12,8 @@
 #include <stdio.h>
 #include <string>
 
+
+//TURNS OUT that this class will only be used to 
 class Person {
 public:
     Person(std::string name, int age, std::string occupation);

@@ -23,7 +23,11 @@ public:
     FriendshipGraph(int size); //The constructor will initialize the adjacencylist table
     
     int hash(std::string str); //use linear hashing
-    int insert(Person::Person p);
+    void insert(std::string str);
+    void addFriend(std::string str);
+    int findFriend(std::string str);
+    int stringValue(std::string str);
+
     
 private:
     int TABLE_SIZE;

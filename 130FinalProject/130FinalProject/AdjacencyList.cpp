@@ -8,7 +8,3 @@
 
 #include "AdjacencyList.h"
 
-AdjacencyList::AdjacencyList (int size)
-{
-    
-}

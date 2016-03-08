@@ -69,12 +69,18 @@ int main(int argc, char** argv)
             //words[0] will be the name of the person
             //words[1] will be the age of the person
             //words[2] will be the occupation/desciption
+
+            //Add the name of the person into the hash table
+            graph->insert(words[0]);
             
-            //Create an object with these parameters
-            Person* person = new Person(words[0],stoi(words[1]), words[2]);
-            cout << person->getName() << endl;
-            //Add the person into the hash table
-    
+            //Create linked list of friend names inside hash table element
+            int j =3;
+            while (j <= words.size()-1){
+                graph->addFriend(words[j]);
+            }
+            
+            //Add the name(words[0]), age(words[1]), and occupation(words[2]) of person to disk in Person.cpp
+            
         }
         
         

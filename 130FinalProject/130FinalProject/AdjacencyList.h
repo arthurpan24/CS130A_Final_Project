@@ -15,14 +15,17 @@
 //This class is a table that contains people objects and also contains pointers to the memory stored on disk
 class AdjacencyList {
 public:
-    AdjacencyList(int size);
-    
-private:
-    struct Node {
-        Person p; //should just be the name
-        //PointerToDisk* ptr;
-        Node *next;
+    struct LinkedListNode {
+        std::string name;
+        LinkedListNode* next;
     };
+    AdjacencyList();
+    std::string name;
+    LinkedListNode* node;
+
+private:
+
+
 };
 
 #endif /* AdjacencyList_h */
