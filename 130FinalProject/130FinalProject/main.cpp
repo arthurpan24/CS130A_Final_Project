@@ -40,7 +40,7 @@ int main(int argc, char** argv)
         return 1;
     }
     
-    cout << path;
+    //cout << path;
     
     ifstream f;
     f.open(path.c_str(), ios::in);
@@ -58,6 +58,7 @@ int main(int argc, char** argv)
             }
             cout << words.size() << endl;
             // ... TO DO
+            //should parse the 
         }
     }
     return 0;

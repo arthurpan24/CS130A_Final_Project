@@ -11,4 +11,8 @@
 
 #include <stdio.h>
 
+class HashTable {
+    public:
+    private:
+};
 #endif /* HashTable_h */

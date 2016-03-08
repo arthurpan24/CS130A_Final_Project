@@ -10,5 +10,13 @@
 #define Person_h
 
 #include <stdio.h>
+#include <string>
+
+class Person {
+    public:
+    std::string name;
+    int age;
+    std::string occupation;
+};
 
 #endif /* Person_h */
