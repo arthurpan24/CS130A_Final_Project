@@ -64,9 +64,9 @@ int main(int argc, char** argv)
             vector<string> words = split(line, ',');
             
             for (int i = 0; i <words.size(); i++) {
-                cout << words[i] << ",";
+               // cout << words[i] << ",";
             }
-            cout << endl;
+            //cout << endl;
 
             //Add the name of the person into the adjacency list
             if (words.size()>0) {
@@ -92,15 +92,21 @@ int main(int argc, char** argv)
                 
                 for (int i=0; i < words[0].length(); i++) {
                     name[i] = words[0].at(i);
+                    cout << name[i];
                 }
+                cout << name; //WTF this is different
                 for (int j=0; j < words[1].length(); j++) {
                     age[j] = words[1].at(j);
                 }
                 for (int k=0; k < words[2].length(); k++) {
                     occupation[k] = words[2].at(k);
                 }
-     
+                cout<< "TEST: " << words[0] << " " << words[1] << " " << words[2] << endl;
+                
+                //test 2 is not working, and it seems like the people without friends are having issues haha
+                cout << "TEST2: " << name << " " << age << " "<< occupation << endl;
                 //Add ~ for buffer spaces
+                //cout << (int)words[0].length() << " " << (int)words[1].length() << " " << (int)words[2].length() << endl;
                 for (int i = (int)words[0].length(); i < 20; i++) {
                     name[i] = '~';
                 }
@@ -111,6 +117,7 @@ int main(int argc, char** argv)
                     occupation[i] = '~';
                 }
                 
+               // cout << name << age << occupation << endl;
                 outputFile << name << age << occupation << "\n"; //quite possibly won't be using a new line manually like this
             }
         
