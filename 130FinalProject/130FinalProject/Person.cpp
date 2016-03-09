@@ -7,52 +7,19 @@
 //
 
 #include "Person.h"
+#include <iostream>
+#include <fstream>
+using namespace std;
 
-//Constructors
-Person::Person()
+void Person::addPersonToProfileData(std::string name, int age, std::string occupation)
 {
-    this->name = "";
-    this->age = -1;
-    this->occupation = "";
-}
-
-Person::Person(std::string name, int age, std::string occupation)
-{
-    this->name = name;
-    this->age = age;
-    this->occupation = occupation;
-}
-
-
-//Getters
-std::string Person::getName()
-{
-    return this->name;
-}
-int Person::getAge()
-{
-    return this->age;
-}
-std::string Person::getOccupation()
-{
-    return this->occupation;
-}
-
-
-//Setters
-void Person::setName(std::string name)
-{
-    this->name = name;
-    return;
-}
-void Person::setAge(int age)
-{
-    this->age = age;
-    return;
-}
-void Person::setOccupation(std::string occupation)
-{
-    this->occupation = occupation;
+    ofstream outputFile;
+    outputFile.open("ProfileData.txt");
+    
+    string helloWorld = "hello world";
+    outputFile << helloWorld;
+    
+    outputFile.close();
     return;
 }
 

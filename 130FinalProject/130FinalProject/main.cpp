@@ -54,6 +54,9 @@ int main(int argc, char** argv)
     else
     {
         FriendshipGraph *graph = new FriendshipGraph(201);
+        ofstream outputFile;
+        outputFile.open("ProfileData.txt");
+        
         while(!f.eof())
         {
             string line;
@@ -63,12 +66,7 @@ int main(int argc, char** argv)
             for (int i = 0; i <words.size(); i++) {
                 cout << words[i] << ",";
             }
-            cout << words.size();
-            
-            //We can assume that the inputs are of currect format, so we can assume that there will be at least 3 inputs
-            //words[0] will be the name of the person
-            //words[1] will be the age of the person
-            //words[2] will be the occupation/desciption
+            cout << endl;
 
             //Add the name of the person into the adjacency list
             if (words.size()>0) {
@@ -81,14 +79,46 @@ int main(int argc, char** argv)
                     j++;
                 }
                 
-                //Add the name(words[0]), age(words[1]), and occupation(words[2]) of person to disk in Person.cpp
+                ///////////////////
+                //THIS DOES NOT WORK YET: CAN'T FIND THE BUG FOR THIS THOUGH
+                ///////////////////
                 
-
+                //Add the name(words[0]), age(words[1]), and occupation(words[2]) of person to disk in Person.cpp
+                //Format: char[20] name, char[3] age, char[30]occupation
+                //NOTE: Use ~ as a buffer until the end of the word
+                char* name = new char[20];
+                char* age = new char[3];
+                char* occupation = new char[30];
+                
+                for (int i=0; i < words[0].length(); i++) {
+                    name[i] = words[0].at(i);
+                }
+                for (int j=0; j < words[1].length(); j++) {
+                    age[j] = words[1].at(j);
+                }
+                for (int k=0; k < words[2].length(); k++) {
+                    occupation[k] = words[2].at(k);
+                }
+     
+                //Add ~ for buffer spaces
+                for (int i = (int)words[0].length(); i < 20; i++) {
+                    name[i] = '~';
+                }
+                for (int i = (int)words[1].length(); i < 3; i++) {
+                    age[i] = '~';
+                }
+                for (int i = (int)words[2].length(); i < 30; i++) {
+                    occupation[i] = '~';
+                }
+                
+                outputFile << name << age << occupation << "\n"; //quite possibly won't be using a new line manually like this
             }
         
         }
      
-        graph->printAllList();
+        //graph->printAllList();
+        
+        outputFile.close();
     }
     return 0;
 }

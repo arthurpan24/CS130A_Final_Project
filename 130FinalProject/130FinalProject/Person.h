@@ -13,28 +13,10 @@
 #include <string>
 
 
-//TURNS OUT that this class will only be used to 
+//TURNS OUT that this class will only be used to write to the Profile Data text file
 class Person {
 public:
-    Person(std::string name, int age, std::string occupation);
-    Person();
-    //Implementation decision: I have decided to use getters and setters
-    //                         instead of keeping the variables public
-    
-    //Getters
-    std::string getName();
-    int getAge();
-    std::string getOccupation();
-    
-    //Setters
-    void setName(std::string name);
-    void setAge(int age);
-    void setOccupation(std::string occupation);
-    
-private:
-    std::string name;
-    int age;
-    std::string occupation;
+    void addPersonToProfileData(std::string name, int age, std::string occupation);
 };
 
 #endif /* Person_h */
