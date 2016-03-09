@@ -24,9 +24,12 @@ public:
     
     int hash(std::string str); //use linear hashing
     void insert(std::string str);
-    void addFriend(std::string str);
+    void addFriend(std::string original, std::string buddy);
     int findFriend(std::string str);
     int stringValue(std::string str);
+
+    //test function
+    void printAllList();
 
     
 private:

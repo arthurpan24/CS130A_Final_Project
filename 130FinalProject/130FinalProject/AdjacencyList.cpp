@@ -8,3 +8,11 @@
 
 #include "AdjacencyList.h"
 
+AdjacencyList::AdjacencyList ()
+{
+    this->name = "";
+    this->empty = true;
+    this->head = NULL;
+    this->tail = NULL;
+    
+}

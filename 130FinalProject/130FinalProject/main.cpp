@@ -70,20 +70,25 @@ int main(int argc, char** argv)
             //words[1] will be the age of the person
             //words[2] will be the occupation/desciption
 
-            //Add the name of the person into the hash table
-            graph->insert(words[0]);
-            
-            //Create linked list of friend names inside hash table element
-            int j =3;
-            while (j <= words.size()-1){
-                graph->addFriend(words[j]);
+            //Add the name of the person into the adjacency list
+            if (words.size()>0) {
+                graph->insert(words[0]);
+                
+                //Create linked list of friend names inside hash table element
+                int j =3;
+                while (j <= words.size()-1){
+                    graph->addFriend(words[0], words[j]);
+                    j++;
+                }
+                
+                //Add the name(words[0]), age(words[1]), and occupation(words[2]) of person to disk in Person.cpp
+                
+
             }
-            
-            //Add the name(words[0]), age(words[1]), and occupation(words[2]) of person to disk in Person.cpp
-            
+        
         }
-        
-        
+     
+        graph->printAllList();
     }
     return 0;
 }

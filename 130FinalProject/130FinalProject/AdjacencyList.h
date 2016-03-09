@@ -9,23 +9,19 @@
 #ifndef AdjacencyList_h
 #define AdjacencyList_h
 
+#include "LinkedListNode.h"
 #include "Person.h"
 #include <stdio.h>
 
 //This class is a table that contains people objects and also contains pointers to the memory stored on disk
 class AdjacencyList {
 public:
-    struct LinkedListNode {
-        std::string name;
-        LinkedListNode* next;
-    };
     AdjacencyList();
+    
     std::string name;
-    LinkedListNode* node;
-
-private:
-
-
+    bool empty;
+    LinkedListNode* head;
+    LinkedListNode* tail;
 };
 
 #endif /* AdjacencyList_h */

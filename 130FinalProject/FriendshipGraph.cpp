@@ -7,15 +7,14 @@
 //
 
 #include "FriendshipGraph.h"
+#include "AdjacencyList.h"
+
+#include <iostream>
 
 FriendshipGraph::FriendshipGraph (int size)
 {
     this->TABLE_SIZE = size;
     this->table = new AdjacencyList[TABLE_SIZE];
-    for (int i =0; i < TABLE_SIZE; i++){
-        this->table[i].name = "";
-        this->table[i].node = nullptr;
-    }
 }
 
 //For this hash funciton, we will be adding up the total ASCII values of the names and modding it with the table size
@@ -40,10 +39,11 @@ int FriendshipGraph::stringValue(std::string str)
 void FriendshipGraph::insert(std::string str)
 {
     int hashValue = hash(str);
-    while (this->table[hashValue].name.compare("")){
+    while (!table[hashValue].empty){
         hashValue++; //linear probing
     }
     this->table[hashValue].name = str;
+    this->table[hashValue].empty = false;
     return;
 }
 
@@ -56,10 +56,43 @@ int FriendshipGraph::findFriend(std::string str)
     return hashValue;
 }
 
-void FriendshipGraph::addFriend(std::string str)
+void FriendshipGraph::addFriend(std::string original, std::string buddy)
 {
-    int hashValue = findFriend(str);
-    this->table[hashValue].node->name = str;
-    this->table[hashValue].node->next = nullptr;
+    int hashValue = findFriend(original);
+    
+    LinkedListNode* insertNode = new LinkedListNode(buddy);
+    
+    //if empty linked list, put at beggining
+    if (this->table[hashValue].head == NULL) {
+        this->table[hashValue].head = insertNode;
+        this->table[hashValue].tail = insertNode;
+
+    }
+    else {
+        this->table[hashValue].tail->next = insertNode;
+        this->table[hashValue].tail = insertNode;
+    }
+   
     return;
 }
+
+//TEST FUNCTION
+void FriendshipGraph::printAllList()
+{
+    for (int i=0; i <TABLE_SIZE; i++) {
+        if (!table[i].empty) {
+            std::cout << "Person: " << table[i].name << ": ";
+            while (table[i].head  != NULL){
+                std::cout << table[i].head->name << ",";
+                table[i].head = table[i].head->next;
+            }
+            std::cout << std::endl;
+        }
+    }
+}
+
+
+
+
+
+
