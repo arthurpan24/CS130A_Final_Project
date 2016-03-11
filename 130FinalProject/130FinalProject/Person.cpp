@@ -9,17 +9,14 @@
 #include "Person.h"
 #include <iostream>
 #include <fstream>
+
 using namespace std;
 
-void Person::addPersonToProfileData(std::string name, int age, std::string occupation)
+
+Person::Person(string name, int age, string occupation)
 {
-    ofstream outputFile;
-    outputFile.open("ProfileData.txt");
-    
-    string helloWorld = "hello world";
-    outputFile << helloWorld;
-    
-    outputFile.close();
-    return;
+    this->name = name;
+    this->age = age;
+    this->occupation = occupation;
 }
 

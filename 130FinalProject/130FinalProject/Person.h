@@ -12,11 +12,21 @@
 #include <stdio.h>
 #include <string>
 
+using namespace std;
 
-//TURNS OUT that this class will only be used to write to the Profile Data text file
 class Person {
 public:
-    void addPersonToProfileData(std::string name, int age, std::string occupation);
+    string name;
+    int age;
+    string occupation;
+    
+    int indexOnDisk;
+    
+    bool saveToDisk;
+    string ToString();
+    
+    Person(string name, int age, string occupation);
+   
 };
 
 #endif /* Person_h */

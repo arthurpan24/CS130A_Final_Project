@@ -14,6 +14,9 @@
 #include <fstream>
 #include <iostream>
 #include <vector>
+
+#include "SocialNetworkDB.h"
+
 using namespace std;
 
 vector<string> split(string str, char delimiter)
@@ -32,6 +35,29 @@ vector<string> split(string str, char delimiter)
 
 int main(int argc, char** argv)
 {
+    SocialNetworkDB* DB = new SocialNetworkDB;
+    
+    
+    string path = "";
+    
+    // Handle Debug Arguements for running the program on our induvidual machines
+    if (argc == 1) {
+        path = "Generated1.txt";
+    } else if (!strcmp(argv[1], "xcode") && !strcmp(argv[2], "arthur")) {
+        path = "/Users/arthurpan/Desktop/CS130A_Final_Project/130FinalProject/130FinalProject/Generated1.txt";
+    } else if (!strcmp(argv[1], "xcode") && !strcmp(argv[2], "jb")) {
+        path = "/Users/JB/Documents/CS130A_Final_Project/130FinalProject/130FinalProject/Generated1.txt";
+    } else {
+        cout << "wrong arguements" << endl;
+        return 1;
+    }
+
+    
+    DB->initializeFromInputData(path);
+    
+    /*
+     
+     
     //Note: Currently, there are 3 different test cases
     //Make sure to use Generated1.txt, Generated2.txt, and Generated3.txt to test
     string path;
@@ -40,7 +66,7 @@ int main(int argc, char** argv)
     } else if (!strcmp(argv[1], "xcode") && !strcmp(argv[2], "arthur")) {
      path = "/Users/arthurpan/Desktop/CS130A_Final_Project/130FinalProject/130FinalProject/Generated1.txt";
     } else if (!strcmp(argv[1], "xcode") && !strcmp(argv[2], "jb")) {
-        path = "/Users/JB/Developement/CS130A_Final_Project/130FinalProject/130FinalProject/Generated1.txt";
+        path = "/Users/JB/Documents/CS130A_Final_Project/130FinalProject/130FinalProject/Generated1.txt";
     } else {
         cout << "wrong arguements" << endl;
         return 1;
@@ -127,5 +153,8 @@ int main(int argc, char** argv)
         
         outputFile.close();
     }
+     
+     
+     */
     return 0;
 }

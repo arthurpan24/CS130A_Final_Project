@@ -14,27 +14,41 @@
 #define FriendshipGraph_h
 
 #include "Person.h"
-#include "AdjacencyList.h"
 #include <string>
 #include <stdio.h>
+#include <vector>
+
+using namespace std;
 
 class FriendshipGraph {
 public:
+
     FriendshipGraph(int size); //The constructor will initialize the adjacencylist table
     
-    int hash(std::string str); //use linear hashing
-    void insert(std::string str);
-    void addFriend(std::string original, std::string buddy);
-    int findFriend(std::string str);
-    int stringValue(std::string str);
-
-    //test function
-    void printAllList();
-
+    int hash(std::string str, int seed); 
+    void insert(string name, int indexOnDisk);
+    void addFriend(std::string target, std::string friendsName, int friendsIndexOnDisk);
+    int findPerson(std::string str);
+    vector<string> findFriends(string target);
+    
     
 private:
-    int TABLE_SIZE;
-    AdjacencyList *table;
+    
+    class AdjacencyListNode {
+    public:
+        string name;
+        int indexOnDisk;
+        AdjacencyListNode* next;
+        
+        AdjacencyListNode(string name, int indexOnDisk) {
+            this->name = name;
+            this->indexOnDisk = indexOnDisk;
+            this->next = NULL;
+        }
+    };
+    
+    int tableSize;
+    AdjacencyListNode **table;
 };
 
 #endif /* FriendshipGraph_h */

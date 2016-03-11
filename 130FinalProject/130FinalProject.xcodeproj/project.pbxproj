@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		29918ACE1C7D34190075F746 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 29918ACD1C7D34190075F746 /* main.cpp */; };
+		29C566A71C92452F00797DD7 /* SocialNetworkDB.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 29C566A51C92452F00797DD7 /* SocialNetworkDB.cpp */; };
+		29C566A91C925E6100797DD7 /* StorageManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 29C566A81C925E6100797DD7 /* StorageManager.cpp */; };
 		4018E3AA1C8EAF3E00C7F980 /* FriendshipGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4018E3A81C8EAF3E00C7F980 /* FriendshipGraph.cpp */; };
-		4018E3AD1C8EB04B00C7F980 /* AdjacencyList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4018E3AB1C8EB04B00C7F980 /* AdjacencyList.cpp */; };
-		4018E3B01C8F9C6F00C7F980 /* LinkedListNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4018E3AE1C8F9C6F00C7F980 /* LinkedListNode.cpp */; };
 		40AAB6B61C7D3D6E00DB91CB /* Person.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 40AAB6B41C7D3D6E00DB91CB /* Person.cpp */; };
 		40AAB6B91C7D3D9500DB91CB /* BTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 40AAB6B71C7D3D9500DB91CB /* BTree.cpp */; };
 /* End PBXBuildFile section */
@@ -30,12 +30,12 @@
 /* Begin PBXFileReference section */
 		29918ACA1C7D34190075F746 /* 130FinalProject */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = 130FinalProject; sourceTree = BUILT_PRODUCTS_DIR; };
 		29918ACD1C7D34190075F746 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		29C566A31C92451B00797DD7 /* StorageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StorageManager.h; sourceTree = "<group>"; };
+		29C566A51C92452F00797DD7 /* SocialNetworkDB.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SocialNetworkDB.cpp; sourceTree = "<group>"; };
+		29C566A61C92452F00797DD7 /* SocialNetworkDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialNetworkDB.h; sourceTree = "<group>"; };
+		29C566A81C925E6100797DD7 /* StorageManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StorageManager.cpp; sourceTree = "<group>"; };
 		4018E3A81C8EAF3E00C7F980 /* FriendshipGraph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FriendshipGraph.cpp; path = ../FriendshipGraph.cpp; sourceTree = "<group>"; };
 		4018E3A91C8EAF3E00C7F980 /* FriendshipGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FriendshipGraph.h; path = ../FriendshipGraph.h; sourceTree = "<group>"; };
-		4018E3AB1C8EB04B00C7F980 /* AdjacencyList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AdjacencyList.cpp; sourceTree = "<group>"; };
-		4018E3AC1C8EB04B00C7F980 /* AdjacencyList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdjacencyList.h; sourceTree = "<group>"; };
-		4018E3AE1C8F9C6F00C7F980 /* LinkedListNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LinkedListNode.cpp; sourceTree = "<group>"; };
-		4018E3AF1C8F9C6F00C7F980 /* LinkedListNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkedListNode.h; sourceTree = "<group>"; };
 		40AAB6B41C7D3D6E00DB91CB /* Person.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Person.cpp; sourceTree = "<group>"; };
 		40AAB6B51C7D3D6E00DB91CB /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
 		40AAB6B71C7D3D9500DB91CB /* BTree.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BTree.cpp; sourceTree = "<group>"; };
@@ -73,12 +73,12 @@
 			isa = PBXGroup;
 			children = (
 				29918ACD1C7D34190075F746 /* main.cpp */,
+				29C566A61C92452F00797DD7 /* SocialNetworkDB.h */,
+				29C566A51C92452F00797DD7 /* SocialNetworkDB.cpp */,
+				29C566A81C925E6100797DD7 /* StorageManager.cpp */,
+				29C566A31C92451B00797DD7 /* StorageManager.h */,
 				4018E3A91C8EAF3E00C7F980 /* FriendshipGraph.h */,
 				4018E3A81C8EAF3E00C7F980 /* FriendshipGraph.cpp */,
-				4018E3AC1C8EB04B00C7F980 /* AdjacencyList.h */,
-				4018E3AB1C8EB04B00C7F980 /* AdjacencyList.cpp */,
-				4018E3AF1C8F9C6F00C7F980 /* LinkedListNode.h */,
-				4018E3AE1C8F9C6F00C7F980 /* LinkedListNode.cpp */,
 				40AAB6B51C7D3D6E00DB91CB /* Person.h */,
 				40AAB6B41C7D3D6E00DB91CB /* Person.cpp */,
 				40AAB6B81C7D3D9500DB91CB /* BTree.h */,
@@ -145,10 +145,10 @@
 			files = (
 				40AAB6B91C7D3D9500DB91CB /* BTree.cpp in Sources */,
 				40AAB6B61C7D3D6E00DB91CB /* Person.cpp in Sources */,
-				4018E3AD1C8EB04B00C7F980 /* AdjacencyList.cpp in Sources */,
+				29C566A91C925E6100797DD7 /* StorageManager.cpp in Sources */,
 				29918ACE1C7D34190075F746 /* main.cpp in Sources */,
-				4018E3B01C8F9C6F00C7F980 /* LinkedListNode.cpp in Sources */,
 				4018E3AA1C8EAF3E00C7F980 /* FriendshipGraph.cpp in Sources */,
+				29C566A71C92452F00797DD7 /* SocialNetworkDB.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,7 +191,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -228,7 +228,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 			};

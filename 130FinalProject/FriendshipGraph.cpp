@@ -7,92 +7,83 @@
 //
 
 #include "FriendshipGraph.h"
-#include "AdjacencyList.h"
 
 #include <iostream>
 
 FriendshipGraph::FriendshipGraph (int size)
 {
-    this->TABLE_SIZE = size;
-    this->table = new AdjacencyList[TABLE_SIZE];
-}
-
-//For this hash funciton, we will be adding up the total ASCII values of the names and modding it with the table size
-//collisions will be solved by linear probing
-int FriendshipGraph::hash(std::string str)
-{
-    int value = stringValue(str);
-    return value%TABLE_SIZE;
-}
-
-//helper function for hash function
-int FriendshipGraph::stringValue(std::string str)
-{
-    int sum = 0;
-    for (int i =0; i < str.size(); i++){
-        int j = str[0];
-        sum += j;
+    this->tableSize = size;
+    this->table = new AdjacencyListNode*[tableSize];
+    
+    for (int i=0; i<tableSize; i++) {
+        table[i] = NULL;
     }
-    return sum;
 }
 
-void FriendshipGraph::insert(std::string str)
+int FriendshipGraph::hash(std::string str, int seed=0)
 {
-    int hashValue = hash(str);
-    while (!table[hashValue].empty){
-        hashValue++; //linear probing
+    int hash = seed;
+    for (int i=0; i<str.length(); i++) {
+        hash = hash *101 + str[i];
     }
-    this->table[hashValue].name = str;
-    this->table[hashValue].empty = false;
+    return hash % tableSize;
+}
+
+void FriendshipGraph::insert(std::string name, int indexOnDisk)
+{
+    int hashValue = hash(name);
+    while (table[hashValue] != NULL){
+        hashValue++;
+    }
+    table[hashValue] = new AdjacencyListNode(name, indexOnDisk);
     return;
 }
 
-int FriendshipGraph::findFriend(std::string str)
+int FriendshipGraph::findPerson(std::string str)
 {
     int hashValue = hash(str);
-    while (this->table[hashValue].name.compare(str)){
-        hashValue++; //linear probing
+    int originalHashValue = hashValue;
+    while (this->table[hashValue]->name.compare(str)){
+        hashValue = (hashValue + 1)%tableSize;
+        if (hashValue == originalHashValue) {
+            return -1;
+        }
     }
     return hashValue;
 }
 
-void FriendshipGraph::addFriend(std::string original, std::string buddy)
+void FriendshipGraph::addFriend(std::string target, std::string friendsName, int friendsIndexOnDisk)
 {
-    int hashValue = findFriend(original);
+    int hashValue = findPerson(target);
     
-    LinkedListNode* insertNode = new LinkedListNode(buddy);
+    if (hashValue == -1) {
+        return;
+    }
     
-    //if empty linked list, put at beggining
-    if (this->table[hashValue].head == NULL) {
-        this->table[hashValue].head = insertNode;
-        this->table[hashValue].tail = insertNode;
-
+    AdjacencyListNode* insertNode = new AdjacencyListNode(friendsName, friendsIndexOnDisk);
+    
+    AdjacencyListNode* p = this->table[hashValue];
+    while (p->next != NULL) {
+        p = p->next;
     }
-    else {
-        this->table[hashValue].tail->next = insertNode;
-        this->table[hashValue].tail = insertNode;
-    }
-   
+    p->next = insertNode;
+    
     return;
 }
 
-//TEST FUNCTION
-void FriendshipGraph::printAllList()
+vector<string> FriendshipGraph::findFriends(string target)
 {
-    for (int i=0; i <TABLE_SIZE; i++) {
-        if (!table[i].empty) {
-            std::cout << "Person: " << table[i].name << ": ";
-            while (table[i].head  != NULL){
-                std::cout << table[i].head->name << ",";
-                table[i].head = table[i].head->next;
-            }
-            std::cout << std::endl;
-        }
+    vector<string> listOfFriends = vector<string>();
+    int hashValue = findPerson(target);
+    
+    if (hashValue == -1) {
+        return listOfFriends;
     }
+    
+    for (AdjacencyListNode* p = this->table[hashValue]->next; p != NULL; p = p->next) {
+        listOfFriends.push_back(p->name);
+    }
+    return listOfFriends;
 }
-
-
-
-
 
 

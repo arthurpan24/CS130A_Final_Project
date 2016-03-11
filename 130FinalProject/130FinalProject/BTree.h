@@ -12,10 +12,18 @@
 #define BTree_h
 
 #include <stdio.h>
+#include <string>
+
+using namespace::std;
 
 class BTree {
     public:
+    BTree(int MValue, int LValue);
+    bool insert(string name, int indexOnDisk);
+    
     private:
+    int M;
+    int L;
 };
 
 #endif /* BTree_h */
