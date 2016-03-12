@@ -10,9 +10,8 @@
 
 #include "BTree.h"
 
-BTree::BTree(int MValue, int LValue) {
-    M = MValue;
-    L = LValue;
+BTree::BTree() {
+
 }
 
 bool BTree::insert(string name, int indexOnDisk) {

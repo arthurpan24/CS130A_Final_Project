@@ -15,7 +15,7 @@ SocialNetworkDB::SocialNetworkDB() {
     
     // Create Data Stuctures
     graph = new FriendshipGraph(211);
-    tree = new BTree(5,3);
+    tree = new BTree();
     
 }
 

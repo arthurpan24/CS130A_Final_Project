@@ -18,12 +18,10 @@ using namespace::std;
 
 class BTree {
     public:
-    BTree(int MValue, int LValue);
+    BTree();
     bool insert(string name, int indexOnDisk);
     
     private:
-    int M;
-    int L;
 };
 
 #endif /* BTree_h */

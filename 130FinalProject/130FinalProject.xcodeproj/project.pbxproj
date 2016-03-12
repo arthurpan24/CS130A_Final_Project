@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2989A2EC1C94D675008F9D4B /* BTreeItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2989A2EA1C94D675008F9D4B /* BTreeItem.cpp */; };
+		2989A2EF1C94D766008F9D4B /* BTreeDataItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2989A2ED1C94D766008F9D4B /* BTreeDataItem.cpp */; };
+		2989A2F21C94D7FB008F9D4B /* BTreeLeafNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2989A2F01C94D7FB008F9D4B /* BTreeLeafNode.cpp */; };
+		2989A2F51C94D832008F9D4B /* BTreeInternalNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2989A2F31C94D832008F9D4B /* BTreeInternalNode.cpp */; };
 		29918ACE1C7D34190075F746 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 29918ACD1C7D34190075F746 /* main.cpp */; };
 		29C566A71C92452F00797DD7 /* SocialNetworkDB.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 29C566A51C92452F00797DD7 /* SocialNetworkDB.cpp */; };
 		29C566A91C925E6100797DD7 /* StorageManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 29C566A81C925E6100797DD7 /* StorageManager.cpp */; };
@@ -28,6 +32,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2989A2EA1C94D675008F9D4B /* BTreeItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BTreeItem.cpp; sourceTree = "<group>"; };
+		2989A2EB1C94D675008F9D4B /* BTreeItem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BTreeItem.hpp; sourceTree = "<group>"; };
+		2989A2ED1C94D766008F9D4B /* BTreeDataItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BTreeDataItem.cpp; sourceTree = "<group>"; };
+		2989A2EE1C94D766008F9D4B /* BTreeDataItem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BTreeDataItem.hpp; sourceTree = "<group>"; };
+		2989A2F01C94D7FB008F9D4B /* BTreeLeafNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BTreeLeafNode.cpp; sourceTree = "<group>"; };
+		2989A2F11C94D7FB008F9D4B /* BTreeLeafNode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BTreeLeafNode.hpp; sourceTree = "<group>"; };
+		2989A2F31C94D832008F9D4B /* BTreeInternalNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BTreeInternalNode.cpp; sourceTree = "<group>"; };
+		2989A2F41C94D832008F9D4B /* BTreeInternalNode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BTreeInternalNode.hpp; sourceTree = "<group>"; };
 		29918ACA1C7D34190075F746 /* 130FinalProject */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = 130FinalProject; sourceTree = BUILT_PRODUCTS_DIR; };
 		29918ACD1C7D34190075F746 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		29C566A31C92451B00797DD7 /* StorageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StorageManager.h; sourceTree = "<group>"; };
@@ -83,6 +95,14 @@
 				40AAB6B41C7D3D6E00DB91CB /* Person.cpp */,
 				40AAB6B81C7D3D9500DB91CB /* BTree.h */,
 				40AAB6B71C7D3D9500DB91CB /* BTree.cpp */,
+				2989A2EB1C94D675008F9D4B /* BTreeItem.hpp */,
+				2989A2EA1C94D675008F9D4B /* BTreeItem.cpp */,
+				2989A2EE1C94D766008F9D4B /* BTreeDataItem.hpp */,
+				2989A2ED1C94D766008F9D4B /* BTreeDataItem.cpp */,
+				2989A2F11C94D7FB008F9D4B /* BTreeLeafNode.hpp */,
+				2989A2F01C94D7FB008F9D4B /* BTreeLeafNode.cpp */,
+				2989A2F41C94D832008F9D4B /* BTreeInternalNode.hpp */,
+				2989A2F31C94D832008F9D4B /* BTreeInternalNode.cpp */,
 			);
 			path = 130FinalProject;
 			sourceTree = "<group>";
@@ -146,7 +166,11 @@
 				40AAB6B91C7D3D9500DB91CB /* BTree.cpp in Sources */,
 				40AAB6B61C7D3D6E00DB91CB /* Person.cpp in Sources */,
 				29C566A91C925E6100797DD7 /* StorageManager.cpp in Sources */,
+				2989A2F51C94D832008F9D4B /* BTreeInternalNode.cpp in Sources */,
 				29918ACE1C7D34190075F746 /* main.cpp in Sources */,
+				2989A2EC1C94D675008F9D4B /* BTreeItem.cpp in Sources */,
+				2989A2F21C94D7FB008F9D4B /* BTreeLeafNode.cpp in Sources */,
+				2989A2EF1C94D766008F9D4B /* BTreeDataItem.cpp in Sources */,
 				4018E3AA1C8EAF3E00C7F980 /* FriendshipGraph.cpp in Sources */,
 				29C566A71C92452F00797DD7 /* SocialNetworkDB.cpp in Sources */,
 			);
