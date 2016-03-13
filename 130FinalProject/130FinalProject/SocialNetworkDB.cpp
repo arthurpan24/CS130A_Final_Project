@@ -32,11 +32,6 @@ void SocialNetworkDB::initializeFromInputData(string path) {
     SM->generateFriendshipDataFromInputFile(path);
     
     initializeFromSavedData(path);
-    
-    addFriendship("Eli", "Levi");
-    printInfoOfFriends("Levi");
-    printInfoOfFriends("Eli");
-    printInfo("Eli");
 }
 
 void SocialNetworkDB::initializeFromSavedData(string path) {

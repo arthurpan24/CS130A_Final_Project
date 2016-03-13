@@ -56,6 +56,7 @@ bool StorageManager::populateBTreeFromProfileData(string path, BTree* tree) {
         return false;
     }
     else {
+        cout << "Populating BTree" << endl;
         int index = 0;
         while(!f.eof()) {
             string line;
@@ -78,6 +79,7 @@ bool StorageManager::populateFriendshipGraphFromData(string path, FriendshipGrap
         return false;
     }
     else {
+        cout << "Populating Friendship Graph" << endl;
         int index = 0;
         while(!f.eof()) {
             string line;
@@ -102,8 +104,9 @@ bool StorageManager::generateProfileDataFromInputFile(string path) {
     
     ifstream f;
     f.open(path.c_str(), ios::in);
-    if(!f) cerr << "Input data not found." << endl;
+    if(!f) cerr << "Input File not found." << endl;
     else {
+        cout << "Generating Profile Data from Input File" << endl;
         ofstream outputFile;
         outputFile.open("ProfileData.txt");
         
@@ -159,8 +162,9 @@ bool StorageManager::generateProfileDataFromInputFile(string path) {
 bool StorageManager::generateFriendshipDataFromInputFile(string path) {
     ifstream f;
     f.open(path.c_str(), ios::in);
-    if(!f) cerr << "File not found." << endl;
+    if(!f) cerr << "Input File not found." << endl;
     else {
+        cout << "Generating Friendship Data from Input File" << endl;
         ofstream outputFile;
         outputFile.open("FriendshipData.txt");
         
