@@ -40,7 +40,7 @@
 		2989A2F11C94D7FB008F9D4B /* BTreeLeafNode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BTreeLeafNode.hpp; sourceTree = "<group>"; };
 		2989A2F31C94D832008F9D4B /* BTreeInternalNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BTreeInternalNode.cpp; sourceTree = "<group>"; };
 		2989A2F41C94D832008F9D4B /* BTreeInternalNode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BTreeInternalNode.hpp; sourceTree = "<group>"; };
-		29918ACA1C7D34190075F746 /* 130FinalProject */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = 130FinalProject; sourceTree = BUILT_PRODUCTS_DIR; };
+		29918ACA1C7D34190075F746 /* 130FinalProject */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = text; name = 130FinalProject; path = /Users/JB/Documents/CS130A_Final_Project/130FinalProject/build/Debug/130FinalProject; sourceTree = "<absolute>"; };
 		29918ACD1C7D34190075F746 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		29C566A31C92451B00797DD7 /* StorageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StorageManager.h; sourceTree = "<group>"; };
 		29C566A51C92452F00797DD7 /* SocialNetworkDB.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SocialNetworkDB.cpp; sourceTree = "<group>"; };
@@ -76,7 +76,6 @@
 		29918ACB1C7D34190075F746 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				29918ACA1C7D34190075F746 /* 130FinalProject */,
 			);
 			name = Products;
 			sourceTree = "<group>";
