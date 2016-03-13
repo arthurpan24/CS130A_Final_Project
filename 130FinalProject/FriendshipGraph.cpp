@@ -57,7 +57,7 @@ int FriendshipGraph::findPerson(std::string str)
 
 void FriendshipGraph::addFriend(std::string target, std::string friendsName, int friendsIndexOnDisk)
 {
-    cout << friendsName << " added as friend to " << target << " with index: " << friendsIndexOnDisk << endl;
+   // cout << friendsName << " added as friend to " << target << " with index: " << friendsIndexOnDisk << endl;
     int hashValue = findPerson(target);
     
     if (hashValue == -1) {
@@ -101,7 +101,7 @@ vector<int> FriendshipGraph::findFriendsIndexes(string target)
     
     for (AdjacencyListNode* p = this->table[hashValue]->next; p != NULL; p = p->next) {
         listOfFriends.push_back(p->indexOnDisk);
-        cout << p->name << " found in list fo friends, index: " << p->indexOnDisk << endl;
+     //   cout << p->name << " found in list fo friends, index: " << p->indexOnDisk << endl;
     }
     return listOfFriends;
 }

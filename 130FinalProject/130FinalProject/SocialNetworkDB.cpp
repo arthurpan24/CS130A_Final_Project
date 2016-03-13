@@ -43,10 +43,10 @@ void SocialNetworkDB::initializeFromSavedData(string path) {
     SM->populateBTreeFromProfileData("ProfileData.txt", tree);
     SM->populateFriendshipGraphFromData("FriendshipData.txt", graph, tree);
     
-    vector<int> x = graph->findFriendsIndexes("Wyatt");
+    vector<int> x = tree->findRange("A","Z");
     for (int i = 0; i < x.size(); i++) {
-        cout << x.at(i) << ", ";
+        cout << SM->getPersonAtIndex(x.at(i)).ToString() << endl;
     }
-    cout << endl;
+    cout << "Number of Results: "<< x.size() <<endl;
 }
 

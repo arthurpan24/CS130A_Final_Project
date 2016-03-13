@@ -99,7 +99,7 @@ int BTree::recursiveFindHelper(BTreeItem* node, string name) {
     
     //Case: Node is a leaf node
     for (int i = 0; i < node->children.size(); i++) {
-        cout << node->children.at(i)->key << endl;
+       // cout << node->children.at(i)->key << endl;
         if (name == node->children.at(i)->key) {
             return recursiveFindHelper(node->children.at(i), name);
         }

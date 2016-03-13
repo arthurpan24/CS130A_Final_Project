@@ -191,7 +191,7 @@ bool StorageManager::generateFriendshipDataFromInputFile(string path) {
 Person StorageManager::getPersonAtIndex(int indexOnDisk)
 {
     if (indexOnDisk <= maxIndex || indexOnDisk >= 0) {
-        cout << indexOnDisk;
+       // cout << indexOnDisk;
         ifstream f;
         string profileDataPath = "ProfileData.txt";
         
