@@ -19,6 +19,41 @@ BTree::BTree() {
     this->root = new BTreeLeafNode();
 }
 
+void BTree::printTreeDiagram() {
+    cout << "/////////////////////////////////////////////////////////////////////////////////////////" << endl;
+    cout << "This is what the B-Tree looks like right now" << endl;
+    cout << "/////////////////////////////////////////////////////////////////////////////////////////" << endl;
+    BTreeItem* node = root;
+    queue<BTreeItem *> currentLevel, nextLevel;
+    if (node == NULL)
+        return;
+    
+    currentLevel.push(node);
+    while (!currentLevel.empty()) {
+        BTreeItem* temp = currentLevel.front();
+        currentLevel.pop();
+        if (temp) {
+            printCurrentNode(temp);
+            for (int i=0; i <temp->children.size(); i++) {
+                nextLevel.push(temp->children.at(i));
+            }
+        }
+        cout << "\t\t";
+        
+        if (currentLevel.empty()) {
+            cout << endl << endl;
+            swap(currentLevel, nextLevel);
+        }
+    }
+    
+}
+void BTree::printCurrentNode(BTreeItem *node) {
+    for (int i=0; i < node->children.size(); i++) {
+        cout << node->children.at(i)->key << ",";
+    }
+}
+
+
 bool BTree::insert(string name, int indexOnDisk) {
     root->insert(new BTreeDataItem(name, indexOnDisk));
     if (root->parent != NULL) {

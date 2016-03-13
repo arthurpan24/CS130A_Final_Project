@@ -14,6 +14,8 @@
 #include <stdio.h>
 #include <string>
 #include <vector>
+#include <queue>
+
 #include "BTreeItem.hpp"
 
 using namespace::std;
@@ -27,7 +29,8 @@ class BTree {
     int find(string name);
     vector<int> findRange(string lowerBound, string upperBound);
     
-    
+    void printTreeDiagram();
+    void printCurrentNode(BTreeItem* node);
     int recursiveFindHelper(BTreeItem* node, string name);
     void recursiveFindRangeHelper(BTreeItem* node, string lowerBound, string upperBound, vector<int>& matches);
     BTreeItem* root;

@@ -26,7 +26,6 @@ public:
     void initializeFromInputData(string path);
     void initializeFromSavedData(string path);
     
-private:
     StorageManager* SM;
     
     FriendshipGraph* graph;
