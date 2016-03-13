@@ -7,3 +7,23 @@
 //
 
 #include "BTreeDataItem.hpp"
+
+void BTreeDataItem::addChild(BTreeItem* item){
+    return;
+}
+
+bool BTreeDataItem::insert(BTreeItem* item){
+    return false;
+}
+
+void BTreeDataItem::restructure(){
+    return;
+}
+
+int BTreeDataItem::getMaxChildren(){
+    return -1;
+}
+
+int BTreeDataItem::getMinChildren(){
+    return -1;
+}

@@ -16,6 +16,11 @@ class BTreeDataItem : public BTreeItem {
 public:
     int indexOnDisk;
     
+    virtual void addChild(BTreeItem* item) override;
+    virtual bool insert(BTreeItem* item) override;
+    virtual void restructure() override;
+    virtual int getMaxChildren() override;
+    virtual int getMinChildren() override;
 };
 
 #endif /* BTreeDataItem_hpp */

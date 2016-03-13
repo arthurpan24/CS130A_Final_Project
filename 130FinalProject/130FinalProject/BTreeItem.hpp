@@ -21,13 +21,15 @@ public:
     vector<BTreeItem*> children;
     BTreeItem* parent;
     
+    virtual bool isRoot();
     virtual void addChild(BTreeItem* item);
+    virtual bool insert(BTreeItem* item);
+    
+    virtual void restructure();
     virtual int getMaxChildren();
     virtual int getMinChildren();
-    virtual bool isRoot();
-    virtual bool insert(BTreeItem* item);
-    virtual void restructure();
     
+    int findIndexToInsertItemAt(BTreeItem *item, vector<BTreeItem*> v);
 
 };
 

@@ -45,24 +45,8 @@ void BTreeItem::addChild(BTreeItem* item){
     }
     std::cout << std::endl;
     
-    //add child to children vector
-    int i;
-    
-    bool hasInserted = false;
-    
-    while (i < children.size()) {
-        if (*item < *(children.at(i)) ) {
-            children.insert(children.begin()+i, item);
-            hasInserted = true;
-            break;
-        }
-        i++;
-    }
-    
-    if (!hasInserted) {
-         children.insert(children.begin()+i, item);
-         hasInserted = true;
-    }
+    int i = findIndexToInsertItemAt(item, children);
+    children.insert(children.begin()+i, item);
     
     std::cout << "New: ";
     for (int i = 0;  i < children.size(); i++) {
@@ -71,6 +55,14 @@ void BTreeItem::addChild(BTreeItem* item){
     std::cout << std::endl;
 }
 
+bool BTreeItem::insert(BTreeItem* item){
+    
+    return false;
+}
+
+void BTreeItem::restructure(){
+    return;
+}
 
 int BTreeItem::getMaxChildren(){
     return -1;
@@ -80,10 +72,16 @@ int BTreeItem::getMinChildren(){
     return -1;
 }
 
-bool BTreeItem::insert(BTreeItem* item){
-    return false;
+int BTreeItem::findIndexToInsertItemAt(BTreeItem *item, vector<BTreeItem*> v) {
+    
+    int i;
+    while (i < v.size()) {
+        if (*item < *(v.at(i)) ) {
+            break;
+        }
+        i++;
+    }
+    return i;
 }
 
-void BTreeItem::restructure(){
-    return;
-}
+

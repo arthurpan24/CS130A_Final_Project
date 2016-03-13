@@ -17,7 +17,9 @@ public:
     vector<string> keys;
     
     virtual int getMaxChildren() override;
-     virtual int getMinChildren() override;
+    virtual int getMinChildren() override;
+    virtual bool insert(BTreeItem* item) override;
+    virtual void restructure() override;
 };
 
 #endif /* BTreeInternalNode_hpp */
