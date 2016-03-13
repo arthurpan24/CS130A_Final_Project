@@ -63,10 +63,14 @@ bool StorageManager::populateBTreeFromProfileData(string path, BTree* tree) {
         while(!f.eof()) {
             string line;
             getline(f,line);
-            vector<string>names = split(line, '~');
-            if (names.size()>0) {
-                tree->insert(names[0], index);
+            
+            string name = line.substr(0,19);
+            name.erase(remove(name.begin(), name.end(), '~'), name.end());
+            
+            if (line.size() > 1) {
+                tree->insert(name, index);
             }
+
             index++;
             this->maxIndex++;
         }
@@ -223,8 +227,16 @@ Person StorageManager::getPersonAtIndex(int indexOnDisk)
             string line;
             f.seekg(indexOnDisk*54);
             getline(f,line);
-            vector<string>words = split(line, '~');
-            Person result(words[0], stoi(words[1]), words[2], indexOnDisk);
+            
+            string name = line.substr(0,19);
+            string age = line.substr(20,22);
+            string occupation = line.substr(23,52);
+            
+            name.erase(remove(name.begin(), name.end(), '~'), name.end());
+            age.erase(remove(age.begin(), age.end(), '~'), age.end());
+            occupation.erase(remove(occupation.begin(), occupation.end(), '~'), occupation.end());
+
+            Person result(name, stoi(age), occupation, indexOnDisk);
             return result;
         }
     }
