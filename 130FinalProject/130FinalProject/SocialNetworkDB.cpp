@@ -60,8 +60,8 @@ void SocialNetworkDB::printAll() {
         Person p = SM->getPersonAtIndex(x.at(i));
         cout << p.ToString() << ", ";
         vector<string> c = graph->findFriendsNames(p.name);
-        for (int i = 0; i < c.size(); i++) {
-            cout << c.at(i) << ", ";
+        for (int j = 0; j < c.size(); j++) {
+            cout << c.at(j) << ", ";
         }
         cout << endl;
     }
@@ -86,6 +86,7 @@ void SocialNetworkDB::printRange(string lowerBound, string upperBound) {
 void SocialNetworkDB::addPerson(string name, int age, string occupation) {
     Person p(name, age, occupation);
     int index = SM->savePersonToProfileData(p);
+    cout << "added with index: " << index << endl;
     tree->insert(p.name, index);
     graph->insert(p.name, index);
 }

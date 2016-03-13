@@ -68,6 +68,7 @@ bool StorageManager::populateBTreeFromProfileData(string path, BTree* tree) {
                 tree->insert(names[0], index);
             }
             index++;
+            this->maxIndex++;
         }
     }
     return true;
@@ -157,7 +158,6 @@ bool StorageManager::generateProfileDataFromInputFile(string path) {
                // cout << name << age << occupation << endl;
                 
                 outputFile << name << age << occupation << "\n";
-                this->maxIndex++;
             }
         }
         
@@ -278,8 +278,9 @@ int StorageManager::savePersonToProfileData(Person p) {
 
     
     outfile << name << age << occupation << endl;
+    int r = maxIndex -1 ;
     maxIndex++;
-    return maxIndex;
+    return r;
     
 }
 

@@ -115,6 +115,7 @@ int main(int argc, char** argv)
             
             case 3:
                 cout << "Enter Person in Question: ";
+                cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                 getline(cin, input);
                 cout << endl;
                 DB->printInfoOfFriends(input);
@@ -122,6 +123,7 @@ int main(int argc, char** argv)
                 
             case 4:
                 cout << "Enter Person in Question: ";
+                cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                 getline(cin, input);
                 cout << endl;
                 DB->printInfo(input);
@@ -169,6 +171,7 @@ int main(int argc, char** argv)
                 cout << "The program will now terminate." << endl;
                 cout << "Thanks for using our program!" << endl;
                 cout << "--------------------------------------------------------- " << endl;
+                DB->SM->SaveFriendshipGraphToDisk(DB->graph);
                 done = true;
                 break;
             default:
