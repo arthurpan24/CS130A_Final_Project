@@ -6,6 +6,9 @@
 //  Copyright © 2016 JB Lanier. All rights reserved.
 //
 
+#include <string>
+#include <iostream>
+
 #include "SocialNetworkDB.h"
 
 SocialNetworkDB::SocialNetworkDB() {
@@ -30,6 +33,16 @@ void SocialNetworkDB::initializeFromInputData(string path) {
     //SM->generateFriendshipDataFromInputFile(path);
     //contruct friendship graph
     SM->generateBTreeFromProfileData("ProfileData.txt", tree);
+    
+    cout << "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" << endl << endl;
+    cout << "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" << endl << endl;
+    cout << "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" << endl << endl;
+    
+    cout << tree->find("Wyatt") << endl;
+    
+    cout << "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" << endl << endl;
+    cout << "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" << endl << endl;
+    cout << "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" << endl << endl;
 }
 
 void SocialNetworkDB::initializeFromSavedData(string path) {
@@ -42,3 +55,4 @@ void SocialNetworkDB::initializeFromSavedData(string path) {
     //contruct friendship graph
     
 }
+

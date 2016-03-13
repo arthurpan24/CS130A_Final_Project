@@ -20,12 +20,13 @@ using namespace::std;
 class BTree {
     public:
     BTree();
-    bool insert(string name, int indexOnDisk);
-    void printTree();
-    void recursivePrintTree(BTreeItem* node);
     
+    bool insert(string name, int indexOnDisk);
+    
+    int find(string name);
+    int recursiveFindHelper(BTreeItem* node, string name);
     BTreeItem* root;
-    private:
+
 };
 
 #endif /* BTree_h */

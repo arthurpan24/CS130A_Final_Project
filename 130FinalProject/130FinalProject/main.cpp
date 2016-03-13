@@ -37,7 +37,6 @@ int main(int argc, char** argv)
 {
     SocialNetworkDB* DB = new SocialNetworkDB;
     
-    
     string path = "";
     
     // Handle Debug Arguements for running the program on our induvidual machines

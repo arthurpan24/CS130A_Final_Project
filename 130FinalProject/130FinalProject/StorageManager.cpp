@@ -27,9 +27,6 @@ vector<string> StorageManager::split(string str, char delimiter)
     return internal;
 }
 
-
-
-
 StorageManager* StorageManager::get() {
     static StorageManager* instance = new StorageManager();
     return instance;
@@ -146,5 +143,12 @@ bool StorageManager::generateFriendshipDataFromInputFile(string path) {
     return true;
 }
 
+
+Person StorageManager::getPersonAtIndex(int indexOnDisk)
+{
+    //go to index on profile data, find name, age, and occupation
+    Person stub("stub" , 65, "tr");
+    return stub;
+}
 
 

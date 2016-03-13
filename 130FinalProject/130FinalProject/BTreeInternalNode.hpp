@@ -24,6 +24,8 @@ public:
     virtual void insert(BTreeItem* item) override;
     virtual BTreeItem* copyWithChildren(vector<BTreeItem*> children) override;
     virtual void printNode() override;
+    virtual void updateKey() override;
 };
+
 
 #endif /* BTreeInternalNode_hpp */

@@ -21,6 +21,7 @@ public:
     vector<BTreeItem*> children;
     BTreeItem* parent;
     
+    
     virtual bool isRoot();
     virtual void addChild(BTreeItem* item);
     virtual void insert(BTreeItem* item);

@@ -63,4 +63,14 @@ void BTreeInternalNode::printNode() {
     BTreeItem::printNode();
 }
 
+void BTreeInternalNode::updateKey()  {
+    BTreeItem::updateKey();
+    if (children.size() != 0) {
+        keys.resize(children.size()-1);
+        for (int i = 1; i < children.size(); i++) {
+            keys[i-1] = children.at(i)->key;
+        }
+    }
+}
+
   

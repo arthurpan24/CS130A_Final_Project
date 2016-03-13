@@ -15,6 +15,7 @@
 
 #include "Person.h"
 #include "BTree.h"
+#include "Person.h"
 
 using namespace std;
 
@@ -26,6 +27,7 @@ public:
     bool generateFriendshipDataFromInputFile(string path);
     bool generateBTreeFromProfileData(string path, BTree* tree);
     
+    Person getPersonAtIndex(int indexOnDisk);
 private:
     vector<string> split(string str, char delimiter);
   

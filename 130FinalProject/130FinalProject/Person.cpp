@@ -12,7 +12,6 @@
 
 using namespace std;
 
-
 Person::Person(string name, int age, string occupation)
 {
     this->name = name;
@@ -20,3 +19,8 @@ Person::Person(string name, int age, string occupation)
     this->occupation = occupation;
 }
 
+Person::Person(string name, int age, string occupation, int indexOnDisk)
+{
+    Person(name, age, occupation);
+    this->indexOnDisk = indexOnDisk;
+}

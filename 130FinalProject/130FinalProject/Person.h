@@ -21,12 +21,12 @@ public:
     string occupation;
     
     int indexOnDisk;
-    
     bool saveToDisk;
     string ToString();
     
     Person(string name, int age, string occupation);
-   
+    Person(string name, int age, string occupation, int indexOnDisk);
+
 };
 
 #endif /* Person_h */
