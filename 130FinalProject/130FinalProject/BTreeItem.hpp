@@ -33,6 +33,8 @@ public:
     
     virtual BTreeItem* copyWithChildren(vector<BTreeItem*> children);
     
+    virtual void printNode();
+    
     int findIndexToInsertItemAt(BTreeItem *item, vector<BTreeItem*> v);
 
 };

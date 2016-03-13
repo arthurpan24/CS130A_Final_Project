@@ -7,6 +7,7 @@
 //
 
 #include "StorageManager.h"
+#include "BTree.h"
 #include <iostream>
 #include <sstream>
 #include <fstream>
@@ -34,11 +35,32 @@ StorageManager* StorageManager::get() {
     return instance;
 }
 
+bool StorageManager::generateBTreeFromProfileData(string path, BTree* tree) {
+    ifstream f;
+    f.open(path.c_str(), ios::in);
+    if (!f) {
+        cerr << "ProfileData.txt not found." << endl;
+        return false;
+    }
+    else {
+        int index = 0;
+        while(!f.eof()) {
+            string line;
+            getline(f,line);
+            vector<string>names = split(line, '~');
+            if (names.size()>0) {
+                tree->insert(names[0], index);
+            }
+            index++;
+        }
+    }
+    return true;
+}
 bool StorageManager::generateProfileDataFromInputFile(string path) {
     
     ifstream f;
     f.open(path.c_str(), ios::in);
-    if(!f) cerr << "File not found." << endl;
+    if(!f) cerr << "Input data not found." << endl;
     else {
         ofstream outputFile;
         outputFile.open("ProfileData.txt");
@@ -83,7 +105,6 @@ bool StorageManager::generateProfileDataFromInputFile(string path) {
                // cout << name << age << occupation << endl;
                 
                 outputFile << name << age << occupation << "\n";
-                
             }
         }
         

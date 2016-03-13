@@ -27,10 +27,10 @@ void SocialNetworkDB::initializeFromInputData(string path) {
     
     SM->generateProfileDataFromInputFile(path);
     //contruct b-tree
-    SM->generateFriendshipDataFromInputFile(path);
+    //SM->generateFriendshipDataFromInputFile(path);
     //contruct friendship graph
-    
-
+    SM->generateBTreeFromProfileData("ProfileData.txt", tree);
+    tree->root->printNode();
 }
 
 void SocialNetworkDB::initializeFromSavedData(string path) {

@@ -7,7 +7,9 @@
 //
 
 #include "BTreeInternalNode.hpp"
+#include <iostream>
 
+using namespace std;
 
 BTreeInternalNode::BTreeInternalNode() {
     this->parent = NULL;
@@ -30,6 +32,10 @@ int BTreeInternalNode::getMinChildren() {
 void BTreeInternalNode::insert(BTreeItem* item){
     
     int i = findIndexToInsertItemAt(item, children);
+    cout << "size of index about to be inserted into: " << children.size() << endl;
+    if (i == children.size()) {
+        i --;
+    }
     children.at(i)->insert(item);
     restructure();
     updateKey();

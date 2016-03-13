@@ -47,9 +47,13 @@ void BTreeItem::addChild(BTreeItem* item){
     }
     std::cout << std::endl;
     ////////////////////////////////////////////
-
     
+    item->updateKey();
+    for (int i = 0; i < children.size(); i++) {
+        children.at(i)->updateKey();
+    }
     int i = findIndexToInsertItemAt(item, children);
+    cout << "size of index about to be inserted into: " << children.size() << endl;
     children.insert(children.begin()+i, item);
     item->parent = this;
     item->updateKey();
@@ -84,9 +88,9 @@ void BTreeItem::restructure(){
     
     if (isRoot()) {
         this->parent = new BTreeInternalNode();
-        this->parent->addChild(this);
     }
     
+    this->parent->addChild(this);
     unsigned long halfSize = children.size()/2;
     vector<BTreeItem*> newNodesChildren(children.begin() + halfSize, children.end());
     children.resize(halfSize);
@@ -107,13 +111,26 @@ BTreeItem* BTreeItem::copyWithChildren(vector<BTreeItem*> children) {
 
 int BTreeItem::findIndexToInsertItemAt(BTreeItem *item, vector<BTreeItem*> v) {
     
-    int i;
+    int i = 0;
     while (i < v.size()) {
         if (*item < *(v.at(i)) ) {
+            cout << item->key << " < " << v.at(i)->key << endl;
             break;
         }
         i++;
     }
+    cout << "Index to insert item at: " << i << endl;
     return i;
+}
+
+void BTreeItem::printNode() {
+    for (int i = 0; i< children.size(); i++) {
+        cout << children.at(i)->key << ", ";
+    }
+    cout << endl;
+    
+    for (int i = 0; i< children.size(); i++) {
+        children.at(i)->printNode();
+    }
 }
 

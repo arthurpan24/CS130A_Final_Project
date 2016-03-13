@@ -7,11 +7,18 @@
 //
 
 #include "BTreeDataItem.hpp"
+#include <iostream>
+
+using namespace std;
 
 BTreeDataItem::BTreeDataItem(string key, int indexOnDisk) {
     this->parent = NULL;
     this->key = key;
     this->indexOnDisk = indexOnDisk;
+}
+
+void BTreeDataItem::printNode() {
+    cout << "DATA ITEM  " << "Name: " << key << " ID" << indexOnDisk << endl;
 }
 
 void BTreeDataItem::addChild(BTreeItem* item){

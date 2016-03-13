@@ -11,7 +11,10 @@
 
 #include <stdio.h>
 #include <vector>
+#include <string>
+
 #include "Person.h"
+#include "BTree.h"
 
 using namespace std;
 
@@ -20,8 +23,8 @@ class StorageManager {
 public:
     static StorageManager* get();
     bool generateProfileDataFromInputFile(string path);
-    
     bool generateFriendshipDataFromInputFile(string path);
+    bool generateBTreeFromProfileData(string path, BTree* tree);
     
 private:
     vector<string> split(string str, char delimiter);

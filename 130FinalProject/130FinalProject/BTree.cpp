@@ -9,12 +9,18 @@
 #include <iostream>
 
 #include "BTree.h"
+#include "BTreeLeafNode.hpp"
+#include "BTreeDataItem.hpp"
 
 BTree::BTree() {
-
+    this->root = new BTreeLeafNode();
 }
 
 bool BTree::insert(string name, int indexOnDisk) {
+    root->insert(new BTreeDataItem(name, indexOnDisk));
+    if (root->parent != NULL) {
+        root = root->parent;
+    }
     //Stub
     std::cout << name << ", " << indexOnDisk << " inserted to BTree" << std::endl;
     return true;

@@ -13,6 +13,7 @@
 
 #include <stdio.h>
 #include <string>
+#include "BTreeItem.hpp"
 
 using namespace::std;
 
@@ -20,7 +21,10 @@ class BTree {
     public:
     BTree();
     bool insert(string name, int indexOnDisk);
+    void printTree();
+    void recursivePrintTree(BTreeItem* node);
     
+    BTreeItem* root;
     private:
 };
 
