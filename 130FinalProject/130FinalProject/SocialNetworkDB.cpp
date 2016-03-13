@@ -48,5 +48,15 @@ void SocialNetworkDB::initializeFromSavedData(string path) {
         cout << SM->getPersonAtIndex(x.at(i)).ToString() << endl;
     }
     cout << "Number of Results: "<< x.size() <<endl;
+    
+    Person dude("Bobson", 1, "baby");
+    SM->savePersonToProfileData(dude);
+    
+    Person w("Dare", 1, "baby");
+    SM->savePersonToProfileData(w);
+    Person e("asd", 13, "president");
+    SM->savePersonToProfileData(e);
+    Person v("Marketh", 86, "baby president");
+    SM->savePersonToProfileData(v);
 }
 

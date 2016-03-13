@@ -13,6 +13,7 @@
 #include <fstream>
 #include <vector>
 
+
 vector<string> StorageManager::split(const string& str, const char& ch) {
     string next;
     vector<string> result;
@@ -214,4 +215,49 @@ Person StorageManager::getPersonAtIndex(int indexOnDisk)
     return Person("No Match Found", -1, "NA" , -1);
 }
 
+void StorageManager::savePersonToProfileData(Person p) {
+    std::ofstream outfile;
+    
+    outfile.open("ProfileData.txt", std::ios_base::app);
+    
+    char* name = new char[20];
+    char* age = new char[3];
+    char* occupation = new char[30];
+    
+    for (int i = 0; i < 20; i++) {
+        name[i] = '~';
+    }
+    name[20] = '\0';
+    
+    for (int i = 0; i < 3; i++) {
+        age[i] = '~';
+    }
+    age[3] = '\0';
+    
+    for (int i = 0; i < 30; i++) {
+        occupation[i] = '~';
+    }
+    occupation[30] = '\0';
+    
+    
+    for (int i=0; i < p.name.length(); i++) {
+        name[i] = p.name.at(i);
+    }
+    
 
+    if (p.age / 10 > 0) {
+        age[0] = (p.age /10) + '0';
+        age[1] = (p.age % 10) + '0';
+    } else {
+        age[0] = (p.age % 10) + '0';
+    }
+    
+    
+    for (int k=0; k < p.occupation.length(); k++) {
+        occupation[k] = p.occupation.at(k);
+    }
+
+    
+    outfile << name << age << occupation << endl;
+    
+}
