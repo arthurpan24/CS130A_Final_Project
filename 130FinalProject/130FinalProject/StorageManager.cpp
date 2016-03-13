@@ -53,6 +53,8 @@ bool StorageManager::populateBTreeFromProfileData(string path, BTree* tree) {
     f.open(path.c_str(), ios::in);
     if (!f) {
         cerr << "Profile Data not found." << endl;
+        cout << "Exiting Program" << endl;
+        exit(0);
         return false;
     }
     else {
@@ -76,6 +78,8 @@ bool StorageManager::populateFriendshipGraphFromData(string path, FriendshipGrap
     f.open(path.c_str(), ios::in);
     if (!f) {
         cerr << "Friendship Data not found." << endl;
+        cout << "Exiting Program" << endl;
+        exit(0);
         return false;
     }
     else {
@@ -104,8 +108,11 @@ bool StorageManager::generateProfileDataFromInputFile(string path) {
     
     ifstream f;
     f.open(path.c_str(), ios::in);
-    if(!f) cerr << "Input File not found." << endl;
-    else {
+    if(!f) {
+        cerr << "Input File not found." << endl;
+        cout << "Exiting Program" << endl;
+        exit(0);
+    } else {
         cout << "Generating Profile Data from Input File" << endl;
         ofstream outputFile;
         outputFile.open("ProfileData.txt");
@@ -162,8 +169,12 @@ bool StorageManager::generateProfileDataFromInputFile(string path) {
 bool StorageManager::generateFriendshipDataFromInputFile(string path) {
     ifstream f;
     f.open(path.c_str(), ios::in);
-    if(!f) cerr << "Input File not found." << endl;
-    else {
+    if(!f) {
+        cerr << "Input File not found." << endl;
+        cout << "Exiting Program" << endl;
+        exit(0);
+        
+    } else {
         cout << "Generating Friendship Data from Input File" << endl;
         ofstream outputFile;
         outputFile.open("FriendshipData.txt");
@@ -205,6 +216,8 @@ Person StorageManager::getPersonAtIndex(int indexOnDisk)
         
         if (!f){
             cerr << "ProfileData.txt not found." << endl;
+            cout << "Exiting Program" << endl;
+            exit(0);
         }
         else {
             string line;
@@ -248,7 +261,7 @@ int StorageManager::savePersonToProfileData(Person p) {
         name[i] = p.name.at(i);
     }
     
-    if (p.age < 999) {
+    if (p.age > 999) {
         cerr << "ERROR: Tried saving an age greater than three digits. " << p.name << " failed to save." << endl;
         return -1;
     }
@@ -274,13 +287,16 @@ void StorageManager::SaveFriendshipGraphToDisk(FriendshipGraph* graph) {
     ofstream outputFile;
     outputFile.open("FriendshipData.txt");
     
+    int n = 0;
     for (int i = 0; i < graph-> tableSize; i++) {
         if (graph->table[i] != NULL) {
             outputFile << graph->table[i]->name << ",";
+            n++;
             for (FriendshipGraph::AdjacencyListNode* p = graph->table[i]->next; p != NULL; p = p->next) {
                 outputFile << p->name << ",";
             }
             outputFile << endl;
         }
     }
+    cout << "-- Friendship information for " << n << " people saved. --" << endl;
 }

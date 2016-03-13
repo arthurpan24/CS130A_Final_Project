@@ -44,7 +44,8 @@ void printOptions() {
     cout << "5. Add a friendship between two people" << endl;
     cout << "6. Add a person to the database" << endl;
     cout << "7. Display the current B-Tree in memory" << endl;
-    cout << "8. Quit the program" << endl;
+    cout << "8. Save New Friendship Data to Disk" << endl;
+    cout << "9. Quit the program" << endl;
     cout << "--------------------------------------------------------- " << endl;
     
 }
@@ -91,7 +92,7 @@ int main(int argc, char** argv)
         printOptions();
         cin >> input;
         int x = stoi(input);
-        if (!(x > 0 && x < 9)) {
+        if (!(x > 0 && x < 10)) {
             cout << "invalid input" << endl;
             continue;
         }
@@ -104,36 +105,37 @@ int main(int argc, char** argv)
             
             case 2:
                 cout << "Enter Lower Bound: ";
-                cin >> input;
-                cout << endl;
+                cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                getline(cin, input);
                 cout << "Enter Upper Bound: ";
-                cin >> input2;
+                getline(cin, input2);
                 cout << endl;
                 DB->printRange(input, input2);
                 break;
             
             case 3:
                 cout << "Enter Person in Question: ";
-                cin >> input;
+                getline(cin, input);
                 cout << endl;
                 DB->printInfoOfFriends(input);
                 break;
                 
             case 4:
                 cout << "Enter Person in Question: ";
-                cin >> input;
+                getline(cin, input);
                 cout << endl;
                 DB->printInfo(input);
                 break;
                 
             case 5:
                 cout << "Enter Friend 1: ";
-                cin >> input;
-                cout << endl;
+                cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                getline(cin, input);
                 cout << "Enter Friend 2: ";
-                cin >> input2;
+                getline(cin, input2);
                 cout << endl;
                 DB->addFriendship(input, input2);
+                break;
                 
             case 6:
             {
@@ -141,7 +143,8 @@ int main(int argc, char** argv)
                 int age;
                 string occupation;
                 cout << "Input the person's name: " << endl;
-                cin >> name;
+                cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                getline(cin, name);
                 cout << "Input the person's age: " << endl;
                 cin >> age;
                 if (age > 999) {
@@ -149,7 +152,8 @@ int main(int argc, char** argv)
                     break;
                 }
                 cout << "Input the person's occupation: " << endl;
-                cin >> occupation;
+                cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                getline(cin,occupation);
                 DB->addPerson(name,age, occupation);
                 cout << name << " has been successfully inserted into the DataBase" << endl;
                 break;
@@ -159,6 +163,9 @@ int main(int argc, char** argv)
                 break;
                 
             case 8:
+                DB->SM->SaveFriendshipGraphToDisk(DB->graph);
+                break;
+            case 9:
                 cout << "The program will now terminate." << endl;
                 cout << "Thanks for using our program!" << endl;
                 cout << "--------------------------------------------------------- " << endl;

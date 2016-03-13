@@ -65,6 +65,7 @@ void SocialNetworkDB::printAll() {
         }
         cout << endl;
     }
+    cout << endl << x.size() << " people found" << endl;
 }
 
 void SocialNetworkDB::printRange(string lowerBound, string upperBound) {
@@ -79,6 +80,7 @@ void SocialNetworkDB::printRange(string lowerBound, string upperBound) {
         }
         cout << endl;
     }
+    cout << endl << x.size() << " people found" << endl;
 }
 
 void SocialNetworkDB::addPerson(string name, int age, string occupation) {
