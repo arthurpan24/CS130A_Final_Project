@@ -13,18 +13,28 @@
 #include <fstream>
 #include <vector>
 
-vector<string> StorageManager::split(string str, char delimiter)
-{
-    vector<string> internal;
-    stringstream ss(str);       // turn the string into a stream.
-    string tok;
+vector<string> StorageManager::split(const string& str, const char& ch) {
+    string next;
+    vector<string> result;
     
-    while(getline(ss, tok, delimiter))
-    {
-        internal.push_back(tok);
+    // For each character in the string
+    for (string::const_iterator it = str.begin(); it != str.end(); it++) {
+        // If we've hit the terminal character
+        if (*it == ch) {
+            // If we have some characters accumulated
+            if (!next.empty()) {
+                // Add them to the result vector
+                result.push_back(next);
+                next.clear();
+            }
+        } else {
+            // Accumulate the next character into the sequence
+            next += *it;
+        }
     }
-    
-    return internal;
+    if (!next.empty())
+        result.push_back(next);
+    return result;
 }
 
 StorageManager* StorageManager::get() {
@@ -146,9 +156,25 @@ bool StorageManager::generateFriendshipDataFromInputFile(string path) {
 
 Person StorageManager::getPersonAtIndex(int indexOnDisk)
 {
-    //go to index on profile data, find name, age, and occupation
-    Person stub("stub" , 65, "tr");
-    return stub;
+    ifstream f;
+    string profileDataPath = "ProfileData.txt";
+    
+    f.open(profileDataPath.c_str(), ios::in);
+
+    
+    if (!f){
+        cerr << "ProfileData.txt not found." << endl;
+    }
+    else {
+        string line;
+        f.seekg(indexOnDisk*54);
+        getline(f,line);
+        vector<string>words = split(line, '~');
+        Person result(words[0], stoi(words[1]), words[2], indexOnDisk);
+        return result;
+    }
+
+    return Person("No Match Found", -1, "NA" , -1);
 }
 
 

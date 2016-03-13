@@ -34,7 +34,7 @@ bool BTree::insert(string name, int indexOnDisk) {
 }
 
 int BTree::find(string name) {
-    return -1;
+    return recursiveFindHelper(root, name);
 }
 
 int BTree::recursiveFindHelper(BTreeItem* node, string name) {
@@ -48,7 +48,6 @@ int BTree::recursiveFindHelper(BTreeItem* node, string name) {
     // CASE: Node in question is a internal node
     BTreeInternalNode* e = dynamic_cast<BTreeInternalNode*>(node);
     if (e != NULL) {
-        cout << "DYNAMIC CAST TO INTERNAL NODE WORKED";
         for (int i = 0; i < e->children.size(); i++) {
             if (i == 0 && (name.compare(e->keys.at(0)) < 0)) {
                 return recursiveFindHelper(e->children.at(0), name);
@@ -71,4 +70,57 @@ int BTree::recursiveFindHelper(BTreeItem* node, string name) {
     }
     
     return -1;
+}
+
+vector<int> BTree::findRange(string lowerBound, string upperBound) {
+    vector<int> results;
+    recursiveFindRangeHelper(root, lowerBound, upperBound, results);
+    return results;
+}
+
+void BTree::recursiveFindRangeHelper(BTreeItem *node, string lowerBound, string upperBound, vector<int> &matches) {
+    // Case: Node in question is a data item (at the tip of a leave node)
+    BTreeDataItem* d = dynamic_cast<BTreeDataItem*>(node);
+    if (d != NULL) {
+        matches.push_back(d->indexOnDisk);
+        return;
+    }
+    
+    // CASE: Node in question is a internal node
+    BTreeInternalNode* e = dynamic_cast<BTreeInternalNode*>(node);
+    if (e != NULL) {
+        
+        int startingIndex = 0;
+        while (startingIndex < e->keys.size()) {
+            if (lowerBound.compare(e->keys.at(startingIndex)) < 0) {
+                break;
+            }
+            
+            startingIndex++;
+        }
+        
+        int i = startingIndex;
+        
+        while (i < e->children.size()) {
+        
+            recursiveFindRangeHelper(e->children.at(i), lowerBound, upperBound, matches);
+            
+            if (i >= e->keys.size() || upperBound.compare(e->keys.at(i)) < 0) {
+                break;
+            }
+            
+            
+            i++;
+        }
+
+        return;
+    }
+    
+    //Case: Node is a leaf node
+    for (int i = 0; i < node->children.size(); i++) {
+        if (node->children.at(i)->key.compare(lowerBound) >= 0 && node->children.at(i)->key.compare(upperBound) <= 0 ) {
+            recursiveFindRangeHelper(node->children.at(i), lowerBound, upperBound, matches);
+        }
+    }
+    return;
 }

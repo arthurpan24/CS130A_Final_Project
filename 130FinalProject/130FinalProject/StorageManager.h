@@ -29,7 +29,7 @@ public:
     
     Person getPersonAtIndex(int indexOnDisk);
 private:
-    vector<string> split(string str, char delimiter);
+    vector<string> split(const string& str, const char& ch);
   
 };
 #endif /* StorageManager_h */

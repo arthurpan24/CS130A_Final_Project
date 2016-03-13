@@ -8,7 +8,7 @@
 
 #include "Person.h"
 #include <iostream>
-#include <fstream>
+#include <sstream>
 
 using namespace std;
 
@@ -21,6 +21,14 @@ Person::Person(string name, int age, string occupation)
 
 Person::Person(string name, int age, string occupation, int indexOnDisk)
 {
-    Person(name, age, occupation);
+    this->name = name;
+    this->age = age;
+    this->occupation = occupation;
     this->indexOnDisk = indexOnDisk;
+}
+
+string Person::ToString() {
+    stringstream ss;
+    ss << name << ", " << age << ", " << occupation;
+    return ss.str();
 }

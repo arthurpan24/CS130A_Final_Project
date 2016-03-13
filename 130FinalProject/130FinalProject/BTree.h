@@ -13,6 +13,7 @@
 
 #include <stdio.h>
 #include <string>
+#include <vector>
 #include "BTreeItem.hpp"
 
 using namespace::std;
@@ -24,7 +25,11 @@ class BTree {
     bool insert(string name, int indexOnDisk);
     
     int find(string name);
+    vector<int> findRange(string lowerBound, string upperBound);
+    
+    
     int recursiveFindHelper(BTreeItem* node, string name);
+    void recursiveFindRangeHelper(BTreeItem* node, string lowerBound, string upperBound, vector<int>& matches);
     BTreeItem* root;
 
 };
