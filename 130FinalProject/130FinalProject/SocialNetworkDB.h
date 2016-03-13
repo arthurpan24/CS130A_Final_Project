@@ -28,6 +28,17 @@ public:
     
     StorageManager* SM;
     
+    // Queries
+    void printInfoOfFriends(string target);
+    void printAll();
+    void printRange(string lowerBound, string upperBound);
+    void addPerson(string name, int age, string occupation);
+    void addFriendship(string target, string newFriend);
+    void printInfo(string name);
+    void displayTree();
+    
+    
+    
     FriendshipGraph* graph;
     BTree* tree;
 };

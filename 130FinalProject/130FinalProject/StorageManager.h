@@ -30,7 +30,9 @@ public:
     bool populateFriendshipGraphFromData(string path, FriendshipGraph *graph, BTree* tree);
     
     Person getPersonAtIndex(int indexOnDisk);
-    void savePersonToProfileData(Person p);
+    int savePersonToProfileData(Person p);
+    
+    void SaveFriendshipGraphToDisk(FriendshipGraph* graph);
 private:
     StorageManager();
     vector<string> split(const string& str, const char& ch);

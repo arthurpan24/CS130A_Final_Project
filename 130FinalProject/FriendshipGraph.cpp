@@ -42,7 +42,7 @@ void FriendshipGraph::insert(std::string name, int indexOnDisk)
     return;
 }
 
-int FriendshipGraph::findPerson(std::string str)
+int FriendshipGraph::findPersonsHashValue(std::string str)
 {
     int hashValue = hash(str);
     int originalHashValue = hashValue;
@@ -58,7 +58,7 @@ int FriendshipGraph::findPerson(std::string str)
 void FriendshipGraph::addFriend(std::string target, std::string friendsName, int friendsIndexOnDisk)
 {
    // cout << friendsName << " added as friend to " << target << " with index: " << friendsIndexOnDisk << endl;
-    int hashValue = findPerson(target);
+    int hashValue = findPersonsHashValue(target);
     
     if (hashValue == -1) {
         return;
@@ -78,9 +78,10 @@ void FriendshipGraph::addFriend(std::string target, std::string friendsName, int
 vector<string> FriendshipGraph::findFriendsNames(string target)
 {
     vector<string> listOfFriends = vector<string>();
-    int hashValue = findPerson(target);
+    int hashValue = findPersonsHashValue(target);
     
     if (hashValue == -1) {
+        cout << target << " not found in social network DB" << endl;
         return listOfFriends;
     }
     
@@ -93,9 +94,10 @@ vector<string> FriendshipGraph::findFriendsNames(string target)
 vector<int> FriendshipGraph::findFriendsIndexes(string target)
 {
     vector<int> listOfFriends = vector<int>();
-    int hashValue = findPerson(target);
+    int hashValue = findPersonsHashValue(target);
     
     if (hashValue == -1) {
+        cout << target << " not found in social network DB" << endl;
         return listOfFriends;
     }
     

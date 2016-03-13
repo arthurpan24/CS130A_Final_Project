@@ -28,12 +28,9 @@ public:
     int hash(std::string str, int seed); 
     void insert(string name, int indexOnDisk);
     void addFriend(std::string target, std::string friendsName, int friendsIndexOnDisk);
-    int findPerson(std::string str);
+    int findPersonsHashValue(std::string str);
     vector<string> findFriendsNames(string target);
     vector<int> findFriendsIndexes(string target);
-    
-    
-private:
     
     class AdjacencyListNode {
     public:

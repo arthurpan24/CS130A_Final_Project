@@ -215,7 +215,7 @@ Person StorageManager::getPersonAtIndex(int indexOnDisk)
     return Person("No Match Found", -1, "NA" , -1);
 }
 
-void StorageManager::savePersonToProfileData(Person p) {
+int StorageManager::savePersonToProfileData(Person p) {
     std::ofstream outfile;
     
     outfile.open("ProfileData.txt", std::ios_base::app);
@@ -244,12 +244,14 @@ void StorageManager::savePersonToProfileData(Person p) {
         name[i] = p.name.at(i);
     }
     
+    if (p.age < 999) {
+        cerr << "ERROR: Tried saving an age greater than three digits. " << p.name << " failed to save." << endl;
+        return -1;
+    }
 
-    if (p.age / 10 > 0) {
-        age[0] = (p.age /10) + '0';
-        age[1] = (p.age % 10) + '0';
-    } else {
-        age[0] = (p.age % 10) + '0';
+    string ageInput = to_string(p.age);
+    for (int j=0; j < ageInput.length(); j++) {
+        age[j] = ageInput.at(j);
     }
     
     
@@ -259,5 +261,22 @@ void StorageManager::savePersonToProfileData(Person p) {
 
     
     outfile << name << age << occupation << endl;
+    maxIndex++;
+    return maxIndex;
     
+}
+
+void StorageManager::SaveFriendshipGraphToDisk(FriendshipGraph* graph) {
+    ofstream outputFile;
+    outputFile.open("FriendshipData.txt");
+    
+    for (int i = 0; i < graph-> tableSize; i++) {
+        if (graph->table[i] != NULL) {
+            outputFile << graph->table[i]->name << ",";
+            for (FriendshipGraph::AdjacencyListNode* p = graph->table[i]->next; p != NULL; p = p->next) {
+                outputFile << p->name << ",";
+            }
+            outputFile << endl;
+        }
+    }
 }

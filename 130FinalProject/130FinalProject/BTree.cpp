@@ -104,7 +104,7 @@ int BTree::recursiveFindHelper(BTreeItem* node, string name) {
             return recursiveFindHelper(node->children.at(i), name);
         }
     }
-    
+    cout << name << " not found in social network DB" << endl;
     return -3;
 }
 
