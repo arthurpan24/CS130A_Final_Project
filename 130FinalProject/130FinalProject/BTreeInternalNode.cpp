@@ -39,7 +39,7 @@ void BTreeInternalNode::insert(BTreeItem* item){
             if ((item->key.compare(children.at(i)->key) > 0) ? true : false) {
                 
                 if (i == children.size()-1 || (item->key.compare(children.at(i+1)->key) < 0) ? true : false) {
-                    cout << item->key << " > " << children.at(i)->key << endl;
+     //               cout << item->key << " > " << children.at(i)->key << endl;
                     break;
                 }
             }
@@ -47,8 +47,8 @@ void BTreeInternalNode::insert(BTreeItem* item){
         }
 
     }
-        cout << "Index to insert item at: " << i << endl;
-    cout << "size of index about to be inserted into: " << children.size() << endl;
+  //      cout << "Index to insert item at: " << i << endl;
+  //  cout << "size of index about to be inserted into: " << children.size() << endl;
     children.at(i)->insert(item);
     restructure();
     updateKey();

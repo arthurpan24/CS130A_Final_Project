@@ -22,11 +22,13 @@ FriendshipGraph::FriendshipGraph (int size)
 
 int FriendshipGraph::hash(std::string str, int seed=0)
 {
-    int hash = seed;
-    for (int i=0; i<str.length(); i++) {
-        hash = hash *101 + str[i];
+    unsigned int hash = seed;
+    unsigned long length = str.length() % 30;
+    for (int i=0; i<length; i++) {
+        hash = hash * 101 + str[i];
     }
-    return hash % tableSize;
+    unsigned int hashValue = hash % tableSize;
+       return hashValue;
 }
 
 void FriendshipGraph::insert(std::string name, int indexOnDisk)
@@ -36,6 +38,7 @@ void FriendshipGraph::insert(std::string name, int indexOnDisk)
         hashValue++;
     }
     table[hashValue] = new AdjacencyListNode(name, indexOnDisk);
+   // cout << table[hashValue]->name << " inserted at hashValue " << hashValue << " With index " << indexOnDisk << endl;
     return;
 }
 
@@ -43,7 +46,7 @@ int FriendshipGraph::findPerson(std::string str)
 {
     int hashValue = hash(str);
     int originalHashValue = hashValue;
-    while (this->table[hashValue]->name.compare(str)){
+    while (this->table[hashValue] == NULL || this->table[hashValue]->name.compare(str)){
         hashValue = (hashValue + 1)%tableSize;
         if (hashValue == originalHashValue) {
             return -1;
@@ -54,6 +57,7 @@ int FriendshipGraph::findPerson(std::string str)
 
 void FriendshipGraph::addFriend(std::string target, std::string friendsName, int friendsIndexOnDisk)
 {
+    cout << friendsName << " added as friend to " << target << " with index: " << friendsIndexOnDisk << endl;
     int hashValue = findPerson(target);
     
     if (hashValue == -1) {
@@ -71,7 +75,7 @@ void FriendshipGraph::addFriend(std::string target, std::string friendsName, int
     return;
 }
 
-vector<string> FriendshipGraph::findFriends(string target)
+vector<string> FriendshipGraph::findFriendsNames(string target)
 {
     vector<string> listOfFriends = vector<string>();
     int hashValue = findPerson(target);
@@ -82,6 +86,22 @@ vector<string> FriendshipGraph::findFriends(string target)
     
     for (AdjacencyListNode* p = this->table[hashValue]->next; p != NULL; p = p->next) {
         listOfFriends.push_back(p->name);
+    }
+    return listOfFriends;
+}
+
+vector<int> FriendshipGraph::findFriendsIndexes(string target)
+{
+    vector<int> listOfFriends = vector<int>();
+    int hashValue = findPerson(target);
+    
+    if (hashValue == -1) {
+        return listOfFriends;
+    }
+    
+    for (AdjacencyListNode* p = this->table[hashValue]->next; p != NULL; p = p->next) {
+        listOfFriends.push_back(p->indexOnDisk);
+        cout << p->name << " found in list fo friends, index: " << p->indexOnDisk << endl;
     }
     return listOfFriends;
 }

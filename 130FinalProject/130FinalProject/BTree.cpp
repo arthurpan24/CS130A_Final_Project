@@ -59,12 +59,12 @@ bool BTree::insert(string name, int indexOnDisk) {
     if (root->parent != NULL) {
         root = root->parent;
     }
-    cout << "/////////////////////////////////////////////////////////////////////////////////////////" << endl;
-    std::cout << "----------------" << name << ", " << indexOnDisk << " INSERTED!" << "----------------" << std::endl;
-    cout << "/////////////////////////////////////////////////////////////////////////////////////////" << endl;
-    cout << "COTENTS OF NEW TREE: " << endl;
-    root->printNode();
-    cout << "/////////////////////////////////////////////////////////////////////////////////////////" << endl;
+   // cout << "/////////////////////////////////////////////////////////////////////////////////////////" << endl;
+  //  std::cout << "----------------" << name << ", " << indexOnDisk << " INSERTED!" << "----------------" << std::endl;
+   // cout << "/////////////////////////////////////////////////////////////////////////////////////////" << endl;
+   // cout << "COTENTS OF NEW TREE: " << endl;
+   // root->printNode();
+   // cout << "/////////////////////////////////////////////////////////////////////////////////////////" << endl;
     return true;
 }
 
@@ -90,7 +90,7 @@ int BTree::recursiveFindHelper(BTreeItem* node, string name) {
             if (i >= e->children.size()-1) {
                 return recursiveFindHelper(e->children.at(e->children.size()-1), name);
             }
-            if ((name.compare(e->keys.at(i)) < 0) && (name.compare(e->keys.at(i-1)) > 0) ) {
+            if ((name.compare(e->keys.at(i)) < 0) && (name.compare(e->keys.at(i-1)) >= 0) ) {
                 return recursiveFindHelper(e->children.at(i), name);
             }
         }
@@ -99,12 +99,13 @@ int BTree::recursiveFindHelper(BTreeItem* node, string name) {
     
     //Case: Node is a leaf node
     for (int i = 0; i < node->children.size(); i++) {
+        cout << node->children.at(i)->key << endl;
         if (name == node->children.at(i)->key) {
             return recursiveFindHelper(node->children.at(i), name);
         }
     }
     
-    return -1;
+    return -3;
 }
 
 vector<int> BTree::findRange(string lowerBound, string upperBound) {

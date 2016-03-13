@@ -15,7 +15,7 @@
 
 #include "Person.h"
 #include "BTree.h"
-#include "Person.h"
+#include "FriendshipGraph.h"
 
 using namespace std;
 
@@ -25,11 +25,15 @@ public:
     static StorageManager* get();
     bool generateProfileDataFromInputFile(string path);
     bool generateFriendshipDataFromInputFile(string path);
-    bool generateBTreeFromProfileData(string path, BTree* tree);
+    
+    bool populateBTreeFromProfileData(string path, BTree* tree);
+    bool populateFriendshipGraphFromData(string path, FriendshipGraph *graph, BTree* tree);
     
     Person getPersonAtIndex(int indexOnDisk);
 private:
+    StorageManager();
     vector<string> split(const string& str, const char& ch);
+    int maxIndex;
   
 };
 #endif /* StorageManager_h */

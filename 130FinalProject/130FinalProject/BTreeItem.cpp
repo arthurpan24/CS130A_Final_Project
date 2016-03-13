@@ -41,11 +41,11 @@ bool BTreeItem::isRoot(){
 void BTreeItem::addChild(BTreeItem* item){
     
     ////Debug///////////////////////////////////
-    std::cout << "Sorting Vector. Orig: ";
-    for (int i = 0;  i < children.size(); i++) {
-        std::cout << children.at(i)->key << ",";
-    }
-    std::cout << std::endl;
+  //  std::cout << "Sorting Vector. Orig: ";
+  //  for (int i = 0;  i < children.size(); i++) {
+  //      std::cout << children.at(i)->key << ",";
+  //  }
+ //   std::cout << std::endl;
     ////////////////////////////////////////////
     
     item->updateKey();
@@ -53,7 +53,7 @@ void BTreeItem::addChild(BTreeItem* item){
         children.at(i)->updateKey();
     }
     int i = findIndexToInsertItemAt(item, children);
-    cout << "size of index about to be inserted into: " << children.size() << endl;
+ //   cout << "size of index about to be inserted into: " << children.size() << endl;
     children.insert(children.begin()+i, item);
     recursiveSetParent(this);
     item->updateKey();
@@ -61,11 +61,11 @@ void BTreeItem::addChild(BTreeItem* item){
 
     
     ////Debug///////////////////////////////////
-    std::cout << "New: ";
-    for (int i = 0;  i < children.size(); i++) {
-        std::cout << children.at(i)->key << ",";
-    }
-    std::cout << std::endl;
+   // std::cout << "New: ";
+   // for (int i = 0;  i < children.size(); i++) {
+   //     std::cout << children.at(i)->key << ",";
+  //  }
+   // std::cout << std::endl;
     ////////////////////////////////////////////
 }
 
@@ -115,12 +115,12 @@ int BTreeItem::findIndexToInsertItemAt(BTreeItem *item, vector<BTreeItem*> v) {
     int i = 0;
     while (i < v.size()) {
         if (*item < *(v.at(i)) ) {
-            cout << item->key << " < " << v.at(i)->key << endl;
+    //        cout << item->key << " < " << v.at(i)->key << endl;
             break;
         }
         i++;
     }
-    cout << "Index to insert item at: " << i << endl;
+   // cout << "Index to insert item at: " << i << endl;
     return i;
 }
 

@@ -53,6 +53,6 @@ int main(int argc, char** argv)
 
     
     DB->initializeFromInputData(path);
-    DB->tree->printTreeDiagram();
+  //  DB->tree->printTreeDiagram();
     return 0;
 }

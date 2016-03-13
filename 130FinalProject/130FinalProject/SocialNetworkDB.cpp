@@ -29,15 +29,9 @@ void SocialNetworkDB::initializeFromInputData(string path) {
     }
     
     SM->generateProfileDataFromInputFile(path);
-    //contruct b-tree
-    SM->generateBTreeFromProfileData("ProfileData.txt", tree);
-    //contruct friendship graph
-    //SM->generateFriendshipDataFromInputFile(path);
-    vector<int> p = tree->findRange("A", "B");
-    for (int i = 0; i < p.size(); i++) {
-        cout << SM->getPersonAtIndex(p.at(i)).ToString() << endl;
-    }
+    SM->generateFriendshipDataFromInputFile(path);
     
+    initializeFromSavedData(path);
 }
 
 void SocialNetworkDB::initializeFromSavedData(string path) {
@@ -46,8 +40,13 @@ void SocialNetworkDB::initializeFromSavedData(string path) {
         path = "Generated1.txt";
     }
     
-    //contruct b-tree
-    //contruct friendship graph
+    SM->populateBTreeFromProfileData("ProfileData.txt", tree);
+    SM->populateFriendshipGraphFromData("FriendshipData.txt", graph, tree);
     
+    vector<int> x = graph->findFriendsIndexes("Wyatt");
+    for (int i = 0; i < x.size(); i++) {
+        cout << x.at(i) << ", ";
+    }
+    cout << endl;
 }
 

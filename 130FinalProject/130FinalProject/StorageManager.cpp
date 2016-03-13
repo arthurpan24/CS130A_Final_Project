@@ -42,11 +42,16 @@ StorageManager* StorageManager::get() {
     return instance;
 }
 
-bool StorageManager::generateBTreeFromProfileData(string path, BTree* tree) {
+StorageManager::StorageManager() {
+    maxIndex = 0;
+}
+
+
+bool StorageManager::populateBTreeFromProfileData(string path, BTree* tree) {
     ifstream f;
     f.open(path.c_str(), ios::in);
     if (!f) {
-        cerr << "ProfileData.txt not found." << endl;
+        cerr << "Profile Data not found." << endl;
         return false;
     }
     else {
@@ -63,6 +68,35 @@ bool StorageManager::generateBTreeFromProfileData(string path, BTree* tree) {
     }
     return true;
 }
+
+bool StorageManager::populateFriendshipGraphFromData(string path, FriendshipGraph *graph, BTree* tree) {
+    ifstream f;
+    f.open(path.c_str(), ios::in);
+    if (!f) {
+        cerr << "Friendship Data not found." << endl;
+        return false;
+    }
+    else {
+        int index = 0;
+        while(!f.eof()) {
+            string line;
+            getline(f,line);
+            vector<string>names = split(line, ',');
+            if (names.size()>0) {
+                graph->insert(names[0], index);
+                if (names.size() > 1) {
+                    for (int i = 1; i < names.size(); i++) {
+                        graph->addFriend(names[0], names[i], tree->find(names[i]));
+                    }
+                }
+            }
+            index++;
+        }
+    }
+    return true;
+
+}
+
 bool StorageManager::generateProfileDataFromInputFile(string path) {
     
     ifstream f;
@@ -112,6 +146,7 @@ bool StorageManager::generateProfileDataFromInputFile(string path) {
                // cout << name << age << occupation << endl;
                 
                 outputFile << name << age << occupation << "\n";
+                this->maxIndex++;
             }
         }
         
@@ -153,25 +188,27 @@ bool StorageManager::generateFriendshipDataFromInputFile(string path) {
     return true;
 }
 
-
 Person StorageManager::getPersonAtIndex(int indexOnDisk)
 {
-    ifstream f;
-    string profileDataPath = "ProfileData.txt";
-    
-    f.open(profileDataPath.c_str(), ios::in);
-
-    
-    if (!f){
-        cerr << "ProfileData.txt not found." << endl;
-    }
-    else {
-        string line;
-        f.seekg(indexOnDisk*54);
-        getline(f,line);
-        vector<string>words = split(line, '~');
-        Person result(words[0], stoi(words[1]), words[2], indexOnDisk);
-        return result;
+    if (indexOnDisk <= maxIndex || indexOnDisk >= 0) {
+        cout << indexOnDisk;
+        ifstream f;
+        string profileDataPath = "ProfileData.txt";
+        
+        f.open(profileDataPath.c_str(), ios::in);
+        
+        
+        if (!f){
+            cerr << "ProfileData.txt not found." << endl;
+        }
+        else {
+            string line;
+            f.seekg(indexOnDisk*54);
+            getline(f,line);
+            vector<string>words = split(line, '~');
+            Person result(words[0], stoi(words[1]), words[2], indexOnDisk);
+            return result;
+        }
     }
 
     return Person("No Match Found", -1, "NA" , -1);
