@@ -18,7 +18,8 @@ using namespace std;
 class BTreeItem {
 public:
     string key;
-    vector<BTreeItem> children;
+    vector<BTreeItem*> children;
+    BTreeItem* parent;
     
     virtual void addChild(BTreeItem* item);
     virtual int getMaxChildren();
@@ -27,6 +28,7 @@ public:
     virtual bool insert(BTreeItem* item);
     virtual void restructure();
     
+
 };
 
 
