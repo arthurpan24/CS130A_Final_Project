@@ -55,7 +55,7 @@ void BTreeItem::addChild(BTreeItem* item){
     int i = findIndexToInsertItemAt(item, children);
     cout << "size of index about to be inserted into: " << children.size() << endl;
     children.insert(children.begin()+i, item);
-    item->parent = this;
+    recursiveSetParent(this);
     item->updateKey();
     updateKey();
 
@@ -132,6 +132,14 @@ void BTreeItem::printNode() {
     
     for (int i = 0; i< children.size(); i++) {
         children.at(i)->printNode();
+    }
+}
+
+void BTreeItem::recursiveSetParent(BTreeItem* r) {
+
+    for (int i = 0; i < r->children.size(); i++) {
+        r->children.at(i)->parent = r;
+        recursiveSetParent(r->children.at(i));
     }
 }
 

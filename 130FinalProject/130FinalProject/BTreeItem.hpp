@@ -36,6 +36,8 @@ public:
     virtual void printNode();
     
     int findIndexToInsertItemAt(BTreeItem *item, vector<BTreeItem*> v);
+    
+    void recursiveSetParent(BTreeItem* r);
 
 };
 

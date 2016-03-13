@@ -18,7 +18,7 @@ BTreeDataItem::BTreeDataItem(string key, int indexOnDisk) {
 }
 
 void BTreeDataItem::printNode() {
-    cout << "DATA ITEM  " << "Name: " << key << " ID" << indexOnDisk << endl;
+    //cout << "DATA ITEM  " << "Name: " << key << " ID" << indexOnDisk << endl;
 }
 
 void BTreeDataItem::addChild(BTreeItem* item){
