@@ -8,6 +8,7 @@
 
 #include "BTreeInternalNode.hpp"
 #include <iostream>
+#include "BTreeItem.hpp"
 
 using namespace std;
 
@@ -31,11 +32,23 @@ int BTreeInternalNode::getMinChildren() {
 
 void BTreeInternalNode::insert(BTreeItem* item){
     
-    int i = findIndexToInsertItemAt(item, children);
-    cout << "size of index about to be inserted into: " << children.size() << endl;
-    if (i == children.size()) {
-        i --;
+    int i = 0;
+    if ((item->key.compare(children.at(i)->key) > 0) ? true : false) {
+        
+        while (i < children.size()) {
+            if ((item->key.compare(children.at(i)->key) > 0) ? true : false) {
+                
+                if (i == children.size()-1 || (item->key.compare(children.at(i+1)->key) < 0) ? true : false) {
+                    cout << item->key << " > " << children.at(i)->key << endl;
+                    break;
+                }
+            }
+            i++;
+        }
+
     }
+        cout << "Index to insert item at: " << i << endl;
+    cout << "size of index about to be inserted into: " << children.size() << endl;
     children.at(i)->insert(item);
     restructure();
     updateKey();
@@ -43,6 +56,11 @@ void BTreeInternalNode::insert(BTreeItem* item){
 
 BTreeItem* BTreeInternalNode::copyWithChildren(vector<BTreeItem*> children) {
     return new BTreeInternalNode(children);
+}
+
+void BTreeInternalNode::printNode() {
+    cout << "Internal Node: ";
+    BTreeItem::printNode();
 }
 
   

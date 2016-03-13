@@ -7,6 +7,9 @@
 //
 
 #include "BTreeLeafNode.hpp"
+#include <iostream>
+
+using namespace std;
 
 BTreeLeafNode::BTreeLeafNode() {
     this->parent = NULL;
@@ -34,4 +37,9 @@ void BTreeLeafNode::insert(BTreeItem* item){
 
 BTreeItem* BTreeLeafNode::copyWithChildren(vector<BTreeItem*> children) {
     return new BTreeLeafNode(children);
+}
+
+void BTreeLeafNode::printNode() {
+    cout << "Leaf Node: ";
+    BTreeItem::printNode();
 }

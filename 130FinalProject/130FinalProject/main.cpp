@@ -54,9 +54,6 @@ int main(int argc, char** argv)
 
     
     DB->initializeFromInputData(path);
-    string v = "Violet";
-    string d = "Dominic";
-    cout << v.compare(d);
     
     return 0;
 }

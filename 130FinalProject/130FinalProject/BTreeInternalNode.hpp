@@ -23,6 +23,7 @@ public:
     virtual int getMinChildren() override;
     virtual void insert(BTreeItem* item) override;
     virtual BTreeItem* copyWithChildren(vector<BTreeItem*> children) override;
+    virtual void printNode() override;
 };
 
 #endif /* BTreeInternalNode_hpp */

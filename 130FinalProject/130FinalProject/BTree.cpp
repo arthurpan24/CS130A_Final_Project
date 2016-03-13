@@ -12,6 +12,8 @@
 #include "BTreeLeafNode.hpp"
 #include "BTreeDataItem.hpp"
 
+using namespace std;
+
 BTree::BTree() {
     this->root = new BTreeLeafNode();
 }
@@ -21,7 +23,11 @@ bool BTree::insert(string name, int indexOnDisk) {
     if (root->parent != NULL) {
         root = root->parent;
     }
-    //Stub
-    std::cout << name << ", " << indexOnDisk << " inserted to BTree" << std::endl;
+    cout << "/////////////////////////////////////////////////////////////////////////////////////////" << endl;
+    std::cout << "----------------" << name << ", " << indexOnDisk << " INSERTED!" << "----------------" << std::endl;
+    cout << "/////////////////////////////////////////////////////////////////////////////////////////" << endl;
+    cout << "COTENTS OF NEW TREE: " << endl;
+    root->printNode();
+    cout << "/////////////////////////////////////////////////////////////////////////////////////////" << endl;
     return true;
 }

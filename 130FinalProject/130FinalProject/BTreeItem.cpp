@@ -88,9 +88,10 @@ void BTreeItem::restructure(){
     
     if (isRoot()) {
         this->parent = new BTreeInternalNode();
+        this->parent->addChild(this);
     }
     
-    this->parent->addChild(this);
+    
     unsigned long halfSize = children.size()/2;
     vector<BTreeItem*> newNodesChildren(children.begin() + halfSize, children.end());
     children.resize(halfSize);
