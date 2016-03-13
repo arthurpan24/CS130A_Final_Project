@@ -7,7 +7,17 @@
 //
 
 #include "BTreeInternalNode.hpp"
-#include "BTreeItem.cpp"
+
+
+BTreeInternalNode::BTreeInternalNode() {
+    this->parent = NULL;
+    updateKey();
+}
+
+BTreeInternalNode::BTreeInternalNode(vector<BTreeItem*> children) {
+    BTreeInternalNode();
+    this->children = children;
+}
 
 int BTreeInternalNode::getMaxChildren() {
     return 5;
@@ -17,14 +27,16 @@ int BTreeInternalNode::getMinChildren() {
     return isRoot() ? 2 : 3;
 }
 
-bool BTreeInternalNode::insert(BTreeItem* item){
+void BTreeInternalNode::insert(BTreeItem* item){
     
     int i = findIndexToInsertItemAt(item, children);
     children.at(i)->insert(item);
-    return true;
+    restructure();
+    updateKey();
 }
 
-void BTreeInternalNode::restructure(){
-    
-    return;
+BTreeItem* BTreeInternalNode::copyWithChildren(vector<BTreeItem*> children) {
+    return new BTreeInternalNode(children);
 }
+
+  

@@ -8,12 +8,18 @@
 
 #include "BTreeDataItem.hpp"
 
+BTreeDataItem::BTreeDataItem(string key, int indexOnDisk) {
+    this->parent = NULL;
+    this->key = key;
+    this->indexOnDisk = indexOnDisk;
+}
+
 void BTreeDataItem::addChild(BTreeItem* item){
     return;
 }
 
-bool BTreeDataItem::insert(BTreeItem* item){
-    return false;
+void BTreeDataItem::insert(BTreeItem* item){
+    return;
 }
 
 void BTreeDataItem::restructure(){
@@ -26,4 +32,8 @@ int BTreeDataItem::getMaxChildren(){
 
 int BTreeDataItem::getMinChildren(){
     return -1;
+}
+
+void BTreeDataItem::updateKey() {
+    return;
 }

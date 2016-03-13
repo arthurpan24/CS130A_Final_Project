@@ -15,8 +15,13 @@
 class BTreeLeafNode: public BTreeItem {
 public:
 
+    BTreeLeafNode();
+    BTreeLeafNode(vector<BTreeItem*> children);
+    
     virtual int getMaxChildren() override;
     virtual int getMinChildren() override;
+    virtual void insert(BTreeItem* item) override;
+    virtual BTreeItem* copyWithChildren(vector<BTreeItem*> children) override;
 };
 
 #endif /* BTreeLeafNode_hpp */

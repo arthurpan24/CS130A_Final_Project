@@ -23,11 +23,15 @@ public:
     
     virtual bool isRoot();
     virtual void addChild(BTreeItem* item);
-    virtual bool insert(BTreeItem* item);
+    virtual void insert(BTreeItem* item);
     
     virtual void restructure();
     virtual int getMaxChildren();
     virtual int getMinChildren();
+    
+    virtual void updateKey();
+    
+    virtual BTreeItem* copyWithChildren(vector<BTreeItem*> children);
     
     int findIndexToInsertItemAt(BTreeItem *item, vector<BTreeItem*> v);
 

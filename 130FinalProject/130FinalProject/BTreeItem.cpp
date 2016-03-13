@@ -9,6 +9,7 @@
 #include <iostream>
 
 #include "BTreeItem.hpp"
+#include "BTreeInternalNode.hpp"
 
 bool operator==(const BTreeItem& lhs, const BTreeItem& rhs) {
     return !lhs.key.compare(rhs.key);
@@ -39,29 +40,57 @@ bool BTreeItem::isRoot(){
 
 void BTreeItem::addChild(BTreeItem* item){
     
+    ////Debug///////////////////////////////////
     std::cout << "Sorting Vector. Orig: ";
     for (int i = 0;  i < children.size(); i++) {
         std::cout << children.at(i)->key << ",";
     }
     std::cout << std::endl;
+    ////////////////////////////////////////////
+
     
     int i = findIndexToInsertItemAt(item, children);
     children.insert(children.begin()+i, item);
+    item->parent = this;
+    item->updateKey();
+    updateKey();
+
     
+    ////Debug///////////////////////////////////
     std::cout << "New: ";
     for (int i = 0;  i < children.size(); i++) {
         std::cout << children.at(i)->key << ",";
     }
     std::cout << std::endl;
+    ////////////////////////////////////////////
 }
 
-bool BTreeItem::insert(BTreeItem* item){
-    
-    return false;
+void BTreeItem::updateKey() {
+    if (children.size() > 0) {
+        key = children.at(0)->key;
+    } else {
+        key = "NO_KEY";
+    }
+}
+
+void BTreeItem::insert(BTreeItem* item){
+    return;
 }
 
 void BTreeItem::restructure(){
-    return;
+    if (children.size() <= getMaxChildren()) {
+        return;
+    }
+    
+    if (isRoot()) {
+        this->parent = new BTreeInternalNode();
+        this->parent->addChild(this);
+    }
+    
+    unsigned long halfSize = children.size()/2;
+    vector<BTreeItem*> newNodesChildren(children.begin() + halfSize, children.end());
+    children.resize(halfSize);
+    this->parent->addChild(copyWithChildren(newNodesChildren));
 }
 
 int BTreeItem::getMaxChildren(){
@@ -70,6 +99,10 @@ int BTreeItem::getMaxChildren(){
 
 int BTreeItem::getMinChildren(){
     return -1;
+}
+
+BTreeItem* BTreeItem::copyWithChildren(vector<BTreeItem*> children) {
+    return NULL;
 }
 
 int BTreeItem::findIndexToInsertItemAt(BTreeItem *item, vector<BTreeItem*> v) {
@@ -83,5 +116,4 @@ int BTreeItem::findIndexToInsertItemAt(BTreeItem *item, vector<BTreeItem*> v) {
     }
     return i;
 }
-
 
