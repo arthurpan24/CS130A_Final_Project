@@ -32,6 +32,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		291750B21C969A7A0076E98D /* 130FinalProject */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = 130FinalProject; sourceTree = BUILT_PRODUCTS_DIR; };
 		2989A2EA1C94D675008F9D4B /* BTreeItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BTreeItem.cpp; sourceTree = "<group>"; };
 		2989A2EB1C94D675008F9D4B /* BTreeItem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BTreeItem.hpp; sourceTree = "<group>"; };
 		2989A2ED1C94D766008F9D4B /* BTreeDataItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BTreeDataItem.cpp; sourceTree = "<group>"; };
@@ -40,14 +41,13 @@
 		2989A2F11C94D7FB008F9D4B /* BTreeLeafNode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BTreeLeafNode.hpp; sourceTree = "<group>"; };
 		2989A2F31C94D832008F9D4B /* BTreeInternalNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BTreeInternalNode.cpp; sourceTree = "<group>"; };
 		2989A2F41C94D832008F9D4B /* BTreeInternalNode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BTreeInternalNode.hpp; sourceTree = "<group>"; };
-		29918ACA1C7D34190075F746 /* 130FinalProject */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = text; name = 130FinalProject; path = /Users/JB/Documents/CS130A_Final_Project/130FinalProject/build/Debug/130FinalProject; sourceTree = "<absolute>"; };
 		29918ACD1C7D34190075F746 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		29C566A31C92451B00797DD7 /* StorageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StorageManager.h; sourceTree = "<group>"; };
 		29C566A51C92452F00797DD7 /* SocialNetworkDB.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SocialNetworkDB.cpp; sourceTree = "<group>"; };
 		29C566A61C92452F00797DD7 /* SocialNetworkDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialNetworkDB.h; sourceTree = "<group>"; };
 		29C566A81C925E6100797DD7 /* StorageManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StorageManager.cpp; sourceTree = "<group>"; };
-		4018E3A81C8EAF3E00C7F980 /* FriendshipGraph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FriendshipGraph.cpp; path = ../FriendshipGraph.cpp; sourceTree = "<group>"; };
-		4018E3A91C8EAF3E00C7F980 /* FriendshipGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FriendshipGraph.h; path = ../FriendshipGraph.h; sourceTree = "<group>"; };
+		4018E3A81C8EAF3E00C7F980 /* FriendshipGraph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FriendshipGraph.cpp; sourceTree = "<group>"; };
+		4018E3A91C8EAF3E00C7F980 /* FriendshipGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendshipGraph.h; sourceTree = "<group>"; };
 		40AAB6B41C7D3D6E00DB91CB /* Person.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Person.cpp; sourceTree = "<group>"; };
 		40AAB6B51C7D3D6E00DB91CB /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
 		40AAB6B71C7D3D9500DB91CB /* BTree.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BTree.cpp; sourceTree = "<group>"; };
@@ -76,6 +76,7 @@
 		29918ACB1C7D34190075F746 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				291750B21C969A7A0076E98D /* 130FinalProject */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -123,7 +124,7 @@
 			);
 			name = 130FinalProject;
 			productName = 130FinalProject;
-			productReference = 29918ACA1C7D34190075F746 /* 130FinalProject */;
+			productReference = 291750B21C969A7A0076E98D /* 130FinalProject */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
